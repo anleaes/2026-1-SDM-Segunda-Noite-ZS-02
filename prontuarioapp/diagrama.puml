@@ -1,0 +1,144 @@
+@startuml ProntuarioApp
+
+class Pessoa {
+-nome: Char
+-sobrenome: Char
+-cpf: Char
+-telefone: Char
+-email: Email
++toString()
+}
+
+class Paciente {
+-data_nascimento: Date
+-peso: Float
+-altura: Float
+-endereço: Text
++toString()
+}
+
+class Medico {
+-crm: Char
+-especialidade: CharChoices
+-matricula: Char
+-data_contratacao: Date
+-cargo: Char
+-esta_ativo: Boolean
+
++toString()
+}
+
+class Anamnese {
+-data_criacao: DateTime
+-alergias: Text
+-álcool: CharChoices
+-fumante: CharChoices
+-medicamentos: Text
+-queixa_principal: Text
+-ForeignKey[Paciente]
+-ForeignKey[Medico]
+
++toString()
+}
+
+class Consulta {
+-data_agendada: DateTime
+-status: CharChoices
+-motivo: Text
+-nivel_prioridade: CharChoices
+-ForeignKey[Paciente]
+-ForeignKey[Medico]
++toString()
+}
+
+class ExameSolicitado {
+-nome_exame: Char
+-descricao: Text
+-preparo: Text
+-exige_jejum: Boolean
+-ForeignKey[Consulta]
++toString()
+}
+
+class ResultadoExame {
+-data_resultado: Date
+-conclusoes: Text
+-valor: Float
+-unidade_medida: Char
+-ForeignKey[ExameSolicitado]
++toString()
+}
+
+class Medicamento {
+-principio_ativo: Char
+-e_controlado: Boolean
+-categoria: Char
+-nome_referencia: Char
+-tem_generico: Boolean
++toString()
+}
+
+class Receita {
+-data_emissao: Date
+-validade: Date
+-instrucoes: Text
+-e_digital: Boolean
+-ForeignKey[Consulta]
+-ManyToMany[Medicamento]
++toString()
+}
+
+class ReceitaMedicamento {
+-frequencia: Char
+-duracao_dias: Integer
+-dose: Char
+-concentracao: Char
+-ForeignKey[Medicamento]
+-ForeignKey[Receita]
++toString()
+}
+
+class Cid {
+-cod_cid: Char
+-descricao: Char
+-sintomas: Char
+-tipo: Char
+-status_ativo: Boolean
++toString()
+
+}
+
+class Atestado {
+-tipo_atestado: CharChoices
+-codigo_autenticacao: Char
+-data_inicio_afastamento: Date
+-quantidade_dias: Integer
+-OneToOneField [Consulta]
+-ForeignKey [Cid]
+
++toString()
+}
+
+Paciente -up-|> Pessoa
+
+Medico -up-|> Pessoa
+
+Paciente *--> Anamnese : 0..n
+
+Consulta o--> Atestado : 0..1
+Cid *--> Atestado : n..n
+Receita *--> ReceitaMedicamento  : 0..n
+Consulta o--> Receita : 0..n
+Consulta *--> ExameSolicitado : 0..n
+
+Paciente o--> Consulta : 1..n
+Medico o--> Consulta : 1..n
+Medico *--> Anamnese : 1..1
+ExameSolicitado o--> ResultadoExame : 1..n
+Medicamento *--> ReceitaMedicamento : 0..n
+
+@enduml
+
+
+
+
