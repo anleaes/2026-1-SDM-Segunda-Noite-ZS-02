@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de CIDs - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de CIDs - Prontuário Médico</b>
+
+<br />
+<br />
+
+<a href="{% url 'cid:add_cid' %}">
+    Novo CID
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="10">
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Código CID</th>
+            <th>Descrição</th>
+            <th>Tipo</th>
+            <th>Status</th>
+            <th>Ações</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+        {% for cid in cids %}
+
+            <tr>
+
+                <td>{{ cid.id }}</td>
+
+                <td>{{ cid.cod_cid }}</td>
+
+                <td>{{ cid.descricao }}</td>
+
+                <td>{{ cid.tipo }}</td>
+
+                <td>
+
+                    {% if cid.status_ativo %}
+                        Ativo
+                    {% else %}
+                        Inativo
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    <a href="{% url 'cid:edit_cid' cid.id %}">
+                        Editar
+                    </a>
+
+                    |
+
+                    <a href="{% url 'cid:delete_cid' cid.id %}">
+                        Excluir
+                    </a>
+
+                </td>
+
+            </tr>
+
+        {% empty %}
+
+            <tr>
+
+                <td colspan="6">
+                    Nenhum CID cadastrado
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock body %}

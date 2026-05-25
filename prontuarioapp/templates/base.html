@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>
+
+        {% block title %}
+            Prontuário Médico
+        {% endblock title %}
+
+    </title>
+
+</head>
+
+<body>
+
+    <header class="menu-topo">
+
+    </header>
+
+    <br />
+
+    <nav class="menu-sistema">
+
+        <a href="{% url 'cid:list_cid' %}">
+            <button>
+                Lista de CIDs
+            </button>
+        </a>
+
+        <a href="{% url 'cid:add_cid' %}">
+            <button>
+                Novo CID
+            </button>
+        </a>
+
+        <a href="/cid/api/">
+            <button>
+                API CIDs
+            </button>
+        </a>
+
+        <a href="#">
+            <button>
+                Pacientes
+            </button>
+        </a>
+
+        <a href="#">
+            <button>
+                Consultas
+            </button>
+        </a>
+
+        <a href="#">
+            <button>
+                Médicos
+            </button>
+        </a>
+
+    </nav>
+
+    <br />
+
+    <section class="busca">
+
+        <form action="" method="GET">
+
+            <input
+                name="query"
+                type="text"
+                placeholder="Buscar CID"
+                aria-label="Buscar"
+            >
+
+            <button type="submit">
+                Buscar
+            </button>
+
+        </form>
+
+    </section>
+
+    <main class="conteudo">
+
+        {% block body %}
+
+        {% endblock body %}
+
+    </main>
+
+    <script src="{% static 'js/script.js' %}"></script>
+
+</body>
+
+</html>
