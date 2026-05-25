@@ -22,4 +22,5 @@ urlpatterns = [
     path('cid/', include('cid.urls', namespace='cid')),
     path('atestado/', include('atestado.urls', namespace='atestado')),
     path('exameSolicitado/', include('examesolicitado.urls', namespace='examesolicitado')),
+    path('pessoa/', include('pessoa.urls', namespace='pessoa')),
 ]
