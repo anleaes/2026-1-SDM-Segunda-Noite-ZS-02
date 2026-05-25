@@ -10,6 +10,9 @@ class PessoaViewSet(viewsets.ModelViewSet):
     queryset = Pessoa.objects.all()
     serializer_class = PessoaSerializer
 
+def home(request):
+    return render(request, 'home.html')
+
 # def add_pessoa(request):
 #     template_name = 'pessoa/add_pessoa.html'
 #     context = {}
