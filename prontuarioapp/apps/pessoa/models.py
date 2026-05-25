@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Create your models here. mudancas abaixo apenas para fechar os dois commits
 
 
 class Pessoa(models.Model):
@@ -17,3 +17,4 @@ class Pessoa(models.Model):
 
     def __str__(self):
         return f"{self.nome} {self.sobrenome}"
+    
