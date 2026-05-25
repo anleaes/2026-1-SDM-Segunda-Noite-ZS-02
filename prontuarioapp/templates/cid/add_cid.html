@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar CID - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Cadastro de CID - Prontuário Médico</b>
+
+<br />
+<br />
+
+<form action="" method="POST">
+
+{% csrf_token %}
+
+    <label>Código CID</label>
+    <br />
+    {{ form.cod_cid }}
+    <br />
+    <br />
+
+    <label>Descrição</label>
+    <br />
+    {{ form.descricao }}
+    <br />
+    <br />
+
+    <label>Sintomas</label>
+    <br />
+    {{ form.sintomas }}
+    <br />
+    <br />
+
+    <label>Tipo</label>
+    <br />
+    {{ form.tipo }}
+    <br />
+    <br />
+
+    <label>Status Ativo</label>
+    <br />
+    {{ form.status_ativo }}
+    <br />
+    <br />
+
+    <button type="submit">
+        Salvar CID
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'cid:list_cid' %}">
+    Voltar para Lista de CIDs
+</a>
+
+{% endblock body %}

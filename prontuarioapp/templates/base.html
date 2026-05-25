@@ -1,0 +1,126 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>
+
+        {% block title %}
+            Sistema de Prontuário Médico
+        {% endblock title %}
+
+    </title>
+
+</head>
+
+<body>
+
+    <!-- TOPO -->
+
+    <header class="menu-topo">
+
+        <h1>
+            Sistema de Prontuário Médico
+        </h1>
+
+    </header>
+
+    <!-- MENU -->
+
+    <nav class="menu-sistema">
+
+        <!-- Pessoas -->
+
+        <a href="#">
+            <button>Pessoas</button>
+        </a>
+
+        <!-- Pacientes -->
+
+        <a href="#">
+            <button>Pacientes</button>
+        </a>
+
+        <!-- Médicos -->
+
+        <a href="#">
+            <button>Médicos</button>
+        </a>
+
+        <!-- Consultas -->
+
+        <a href="#">
+            <button>Consultas</button>
+        </a>
+
+        <!-- Anamnese -->
+
+        <a href="#">
+            <button>Anamnese</button>
+        </a>
+
+        <!-- Receitas -->
+
+        <a href="#">
+            <button>Receitas</button>
+        </a>
+
+        <!-- Receita Medicamento -->
+
+        <a href="#">
+            <button>Receita Medicamento</button>
+        </a>
+
+        <!-- Medicamentos -->
+
+        <a href="#">
+            <button>Medicamentos</button>
+        </a>
+
+        <!-- Exames -->
+
+        <a href="#">
+            <button>Exames</button>
+        </a>
+
+        <!-- Resultado Exame -->
+
+        <a href="#">
+            <button>Resultado Exame</button>
+        </a>
+
+        <!-- Atestados -->
+
+        <a href="#">
+            <button>Atestados</button>
+        </a>
+
+        <!-- CID -->
+
+        <a href="{% url 'cid:list_cid' %}">
+            <button>CIDs</button>
+        </a>
+
+    </nav>
+
+    <!-- CONTEÚDO -->
+
+    <main class="conteudo">
+
+        {% block body %}
+
+        {% endblock body %}
+
+    </main>
+
+</body>
+
+</html>
