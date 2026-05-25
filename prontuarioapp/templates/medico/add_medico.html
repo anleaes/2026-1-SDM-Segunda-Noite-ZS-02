@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    {% if form.instance.id %}
+        Editar Médico - {{ block.super }}
+    {% else %}
+        Adicionar Médico - {{ block.super }}
+    {% endif %}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Cadastro de Médico</b>
+
+<br />
+<br />
+
+<form action="" method="POST">
+
+    {% csrf_token %}
+
+    <label>Nome</label>
+    <br />
+    {{ form.nome }}
+    <br /><br />
+
+    <label>Sobrenome</label>
+    <br />
+    {{ form.sobrenome }}
+    <br /><br />
+
+    <label>CPF</label>
+    <br />
+    {{ form.cpf }}
+    <br /><br />
+
+    <label>Telefone</label>
+    <br />
+    {{ form.telefone }}
+    <br /><br />
+
+    <label>Email</label>
+    <br />
+    {{ form.email }}
+    <br /><br />
+
+    <label>CRM</label>
+    <br />
+    {{ form.crm }}
+    <br /><br />
+
+    <label>Especialidade</label>
+    <br />
+    {{ form.especialidade }}
+    <br /><br />
+
+    <label>Matrícula</label>
+    <br />
+    {{ form.matricula }}
+    <br /><br />
+
+    <label>Data de contratação</label>
+    <br />
+    {{ form.data_contratacao }}
+    <br /><br />
+
+    <label>Cargo</label>
+    <br />
+    {{ form.cargo }}
+    <br /><br />
+
+    <label>Está ativo</label>
+    <br />
+    {{ form.esta_ativo }}
+    <br /><br />
+
+    <button type="submit">
+        {% if form.instance.id %}
+            Atualizar Médico
+        {% else %}
+            Salvar Médico
+        {% endif %}
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'medico:list_medico' %}">
+    Voltar para Lista de Médicos
+</a>
+
+{% endblock body %}
