@@ -13,3 +13,4 @@
 /apps/consulta/migrations/*
 /apps/cid/__pycache__/*
 /apps/cid/migrations/*
+settings.json
