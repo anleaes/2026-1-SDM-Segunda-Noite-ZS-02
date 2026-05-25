@@ -10,3 +10,7 @@
 /apps/medicamento/migrations/*
 /apps/consulta/__pycache__/*
 /apps/consulta/migrations/*
+/apps/receita/migrations/*
+/apps/receita/__pycache__/*
+/apps/receitamedicamento/migrations/*
+/apps/receitamedicamento/__pycache__/*
