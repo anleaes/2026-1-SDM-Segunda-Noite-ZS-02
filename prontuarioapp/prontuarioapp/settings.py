@@ -52,9 +52,7 @@ INSTALLED_APPS = [
     'atestado.apps.AtestadoConfig',
     'examesolicitado.apps.ExamesolicitadoConfig',
     'resultadoexame.apps.ResultadoexameConfig',
-    'receita.apps.ReceitaConfig',
     'medicamento.apps.MedicamentoConfig',
-    'receitamedicamento.apps.ReceitamedicamentoConfig',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
