@@ -14,3 +14,5 @@
 /apps/cid/__pycache__/*
 /apps/cid/migrations/*
 settings.json
+/apps/examesolicitado/__pycache__/*
+/apps/examesolicitado/migrations/*
