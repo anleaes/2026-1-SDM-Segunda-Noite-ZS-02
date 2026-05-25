@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Excluir Exame Solicitado - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Excluir Exame Solicitado</b>
+
+<br />
+<br />
+
+<p>
+    Tem certeza que deseja excluir o exame:
+</p>
+
+<br />
+
+<ul>
+
+    <li>
+        <b>Nome:</b> {{ exame.nome_exame }}
+    </li>
+
+    <li>
+        <b>Descrição:</b> {{ exame.descricao }}
+    </li>
+
+    <li>
+        <b>Preparo:</b> {{ exame.preparo }}
+    </li>
+
+    <li>
+        <b>Exige Jejum:</b>
+        {% if exame.exige_jejum %}
+            Sim
+        {% else %}
+            Não
+        {% endif %}
+    </li>
+
+    <li>
+        <b>Consulta:</b> {{ exame.consulta }}
+    </li>
+
+</ul>
+
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'exame:list_exame_solicitado' %}">
+    Cancelar
+</a>
+
+{% endblock body %}
