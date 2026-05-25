@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    {% if form.instance.id %}
+        Editar Anamnese - {{ block.super }}
+    {% else %}
+        Adicionar Anamnese - {{ block.super }}
+    {% endif %}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Cadastro de Anamnese</b>
+
+<br />
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <label>Paciente</label>
+    <br />
+    {{ form.paciente }}
+    <br /><br />
+
+    <label>Médico</label>
+    <br />
+    {{ form.medico }}
+    <br /><br />
+
+    <label>Alergias</label>
+    <br />
+    {{ form.alergias }}
+    <br /><br />
+
+    <label>Consumo de Álcool</label>
+    <br />
+    {{ form.alcool }}
+    <br /><br />
+
+    <label>Fumante</label>
+    <br />
+    {{ form.fumante }}
+    <br /><br />
+
+    <label>Medicamentos</label>
+    <br />
+    {{ form.medicamentos }}
+    <br /><br />
+
+    <label>Queixa Principal</label>
+    <br />
+    {{ form.queixa_principal }}
+    <br /><br />
+
+    <button type="submit">
+        {% if form.instance.id %}
+            Atualizar Anamnese
+        {% else %}
+            Salvar Anamnese
+        {% endif %}
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'anamnese:list_anamnese' %}">
+    Voltar para Lista de Anamneses
+</a>
+
+{% endblock body %}
