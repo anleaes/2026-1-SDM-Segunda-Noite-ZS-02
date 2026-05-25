@@ -7,3 +7,9 @@
 /apps/paciente/migrations/*
 /apps/pessoa/__pycache__/*
 /apps/pessoa/migrations/*
+/apps/consulta/__pycache__/*
+/apps/atestado/__pycache__/*
+/apps/atestado/migrations/*
+/apps/consulta/migrations/*
+/apps/cid/__pycache__/*
+/apps/cid/migrations/*
