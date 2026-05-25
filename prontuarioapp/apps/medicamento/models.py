@@ -8,8 +8,8 @@ class Medicamento(models.Model):
     tem_generico = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = "Pessoa"
-        verbise_name_plural = "Medicamentos"
+        verbose_name = "Medicamento"
+        verbose_name_plural = "Medicamentos"
         ordering =  ['id']
         
     def __str__(self):
