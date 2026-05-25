@@ -1,24 +1,64 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <title>Cadastro de CID</title>
-</head>
-<body>
+{% extends 'base.html' %}
 
-<h1>Cadastrar CID</h1>
+{% block title %}
 
-<form method="POST">
-    {% csrf_token %}
+    Adicionar CID - {{ block.super }}
 
-    {{ form.as_p }}
+{% endblock title %}
 
-    <button type="submit">Salvar</button>
+{% block body %}
+
+<br />
+
+<b>Cadastro de CID - Prontuário Médico</b>
+
+<br />
+<br />
+
+<form action="" method="POST">
+
+{% csrf_token %}
+
+    <label>Código CID</label>
+    <br />
+    {{ form.cod_cid }}
+    <br />
+    <br />
+
+    <label>Descrição</label>
+    <br />
+    {{ form.descricao }}
+    <br />
+    <br />
+
+    <label>Sintomas</label>
+    <br />
+    {{ form.sintomas }}
+    <br />
+    <br />
+
+    <label>Tipo</label>
+    <br />
+    {{ form.tipo }}
+    <br />
+    <br />
+
+    <label>Status Ativo</label>
+    <br />
+    {{ form.status_ativo }}
+    <br />
+    <br />
+
+    <button type="submit">
+        Salvar CID
+    </button>
+
 </form>
 
-<br>
+<br />
 
-<a href="{% url 'cid:list_cid' %}">Voltar</a>
+<a href="{% url 'cid:list_cid' %}">
+    Voltar para Lista de CIDs
+</a>
 
-</body>
-</html>
+{% endblock body %}
