@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Resultados de Exames</h2>
+
+<a href="{% url 'resultadoexame:add_resultado_exame' %}">
+    Novo Resultado
+</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Exame</th>
+            <th>Data</th>
+            <th>Valor</th>
+            <th>Unidade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for resultado in resultados %}
+        <tr>
+            <td>{{ resultado.id }}</td>
+            <td>{{ resultado.exame_solicitado.nome_exame }}</td>
+            <td>{{ resultado.data_resultado }}</td>
+            <td>{{ resultado.valor }}</td>
+            <td>{{ resultado.unidade_medida }}</td>
+
+            <td>
+                <a href="{% url 'resultadoexame:edit_resultado_exame' resultado.id %}">
+                    Editar
+                </a>
+
+                |
+
+                <a href="{% url 'resultadoexame:delete_resultado_exame' resultado.id %}">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}
