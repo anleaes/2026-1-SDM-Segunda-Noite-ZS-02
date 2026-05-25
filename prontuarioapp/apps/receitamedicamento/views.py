@@ -4,3 +4,6 @@ from .serializer import ReceitaMedicamentoSerializer
 
 
 # Create your views here.
+class ReceitaMedicamentoViewSet(viewsets.ModelViewSet):
+    queryset = ReceitaMedicamento.objects.all()
+    serializer_class = ReceitaMedicamentoSerializer
