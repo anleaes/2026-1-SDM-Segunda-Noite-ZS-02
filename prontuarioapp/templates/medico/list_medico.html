@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Médicos - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Médicos</b>
+
+<br />
+<br />
+
+<a href="{% url 'medico:add_medico' %}">
+    Adicionar Médico
+</a>
+
+<br />
+<br />
+
+<ul>
+
+    {% for medico in medicos %}
+
+        <li>
+
+            <b>{{ medico.nome }} {{ medico.sobrenome }}</b>
+            <br />
+            CRM: {{ medico.crm }}
+            <br />
+            Especialidade: {{ medico.especialidade }}
+
+            <br /><br />
+
+            <a href="{% url 'medico:edit_medico' medico.id %}">
+                Editar
+            </a>
+
+            |
+
+            <a href="{% url 'medico:delete_medico' medico.id %}">
+                Excluir
+            </a>
+
+        </li>
+
+        <br />
+
+    {% empty %}
+
+        <li>Nenhum médico cadastrado.</li>
+
+    {% endfor %}
+
+</ul>
+
+{% endblock body %}
