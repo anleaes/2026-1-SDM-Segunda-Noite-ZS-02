@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'anamnese.apps.AnamneseConfig',
     'cid.apps.CidConfig',
     'consulta.apps.ConsultaConfig',
+    'atestado.apps.AtestadoConfig',
 ]
 
 MIDDLEWARE = [
