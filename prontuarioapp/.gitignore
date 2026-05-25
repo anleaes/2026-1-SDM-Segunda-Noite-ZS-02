@@ -4,5 +4,9 @@
 /apps/categories/__pycache__/*
 /apps/categories/migrations/*
 /apps/cid/migrations/*
-.vscode/*
 /apps/cid/__pycache__/*
+.vscode/*
+/apps/medicamento/__pycache__/*
+/apps/medicamento/migrations/*
+/apps/consulta/__pycache__/*
+/apps/consulta/migrations/*
