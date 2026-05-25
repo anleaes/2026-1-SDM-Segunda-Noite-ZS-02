@@ -8,5 +8,10 @@ class Cid(models.Model):
     tipo = models.CharField(max_length=100)
     status_ativo = models.BooleanField(default=True)
 
+    class Meta:
+        verbose_name = 'Funcionario'
+        verbose_name_plural = 'Funcionarios'
+        ordering =['id']
+
     def __str__(self):
         return f"{self.cod_cid} - {self.descricao}"
