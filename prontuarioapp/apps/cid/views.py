@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Employee
+from .models import Cid
 from rest_framework import viewsets
 from .serializer import CidSerializer
 
