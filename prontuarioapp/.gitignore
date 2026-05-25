@@ -3,3 +3,5 @@
 /apps/categories/migrations/*
 /apps/categories/__pycache__/*
 /apps/categories/migrations/*
+/apps/medicamento/__pycache__/*
+/apps/medicamento/migrations/*
