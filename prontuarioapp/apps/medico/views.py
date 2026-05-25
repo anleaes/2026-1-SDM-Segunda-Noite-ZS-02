@@ -6,6 +6,9 @@ from .serializer import MedicoSerializer
 from .forms import MedicoForm
 
 # Create your views here.
+class MedicoViewSet(viewsets.ModelViewSet):
+    queryset = Medico.objects.all()
+    serializer_class = MedicoSerializer
 
 def add_medico(request):
     template_name = 'medico/add_medico.html'
