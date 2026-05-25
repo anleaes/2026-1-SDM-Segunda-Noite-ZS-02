@@ -5,7 +5,7 @@ from . import views
 app_name = 'consulta'
 
 router = routers.SimpleRouter()
-router.register('', views.ConsultaViewSet, basename='consulta')
+router.register('api', views.ConsultaViewSet, basename='consulta')
 
 urlpatterns = [
     path('api', include(router.urls)),

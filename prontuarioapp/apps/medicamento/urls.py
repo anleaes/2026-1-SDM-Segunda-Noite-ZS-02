@@ -5,7 +5,7 @@ from rest_framework import routers
 app_name = 'medicamento'
 
 router = routers.SimpleRouter()
-router.register('', views.MedicamentoViewSet, basename='medicamento')
+router.register('api', views.MedicamentoViewSet, basename='medicamento')
 
 urlpatterns = [
     path('api', include(router.urls)),

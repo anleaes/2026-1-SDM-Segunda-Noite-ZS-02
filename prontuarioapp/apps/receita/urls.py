@@ -5,7 +5,7 @@ from . import views
 app_name = 'receita'
 
 router = routers.SimpleRouter()
-router.register('', views.ReceitaViewSet, basename='receita')
+router.register('api', views.ReceitaViewSet, basename='receita')
 
 urlpatterns = [
     path('api', include(router.urls)),
