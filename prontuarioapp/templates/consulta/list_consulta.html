@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Consultas</h2>
+
+<a href="{% url 'consulta:add_consulta' %}">
+    Nova Consulta
+</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Data</th>
+            <th>Status</th>
+            <th>Prioridade</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for consulta in consultas %}
+        <tr>
+            <td>{{ consulta.id }}</td>
+            <td>{{ consulta.paciente }}</td>
+            <td>{{ consulta.medico }}</td>
+            <td>{{ consulta.data_agendada }}</td>
+            <td>{{ consulta.get_status_display }}</td>
+            <td>{{ consulta.get_nivel_prioridade_display }}</td>
+
+            <td>
+                <a href="{% url 'consulta:edit_consulta' consulta.id %}">
+                    Editar
+                </a>
+                |
+                <a href="{% url 'consulta:delete_consulta' consulta.id %}">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

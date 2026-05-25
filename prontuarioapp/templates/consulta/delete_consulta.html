@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Excluir Consulta</h2>
+
+<p>
+    Tem certeza que deseja excluir a consulta de:
+    <strong>{{ consulta.paciente }}</strong>
+    com o médico
+    <strong>{{ consulta.medico }}</strong>?
+</p>
+
+<p>
+    Data: {{ consulta.data_agendada }}
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+</form>
+
+<br>
+
+<a href="{% url 'consulta:list_consulta' %}">
+    Cancelar
+</a>
+
+{% endblock body %}
