@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Pessoas - {{ block.super }}
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Pessoas</b>
+
+<br />
+<br />
+
+<a href="{% url 'pessoa:add_pessoa' %}">
+    Nova Pessoa
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="8">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Sobrenome</th>
+            <th>CPF</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for pessoa in pessoas %}
+
+        <tr>
+            <td>{{ pessoa.id }}</td>
+            <td>{{ pessoa.nome }}</td>
+            <td>{{ pessoa.sobrenome }}</td>
+            <td>{{ pessoa.cpf }}</td>
+            <td>{{ pessoa.telefone }}</td>
+            <td>{{ pessoa.email }}</td>
+
+            <td>
+
+                <a href="{% url 'pessoa:edit_pessoa' pessoa.id %}">
+                    Editar
+                </a>
+
+                |
+
+                <a href="{% url 'pessoa:delete_pessoa' pessoa.id %}">
+                    Excluir
+                </a>
+
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock body %}
