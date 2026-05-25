@@ -10,7 +10,7 @@ class ExameSolicitadoViewSet(viewsets.ModelViewSet):
     serializer_class = ExameSolicitadoSerializer 
 
 def add_exame_solicitado(request):
-    template_name = 'exame/add_exame_solicitado.html'
+    template_name = 'exameSolicitado/add_exame_solicitado.html'
     context = {}
 
     if request.method == 'POST':
@@ -26,7 +26,7 @@ def add_exame_solicitado(request):
     return render(request, template_name, context)
 
 def list_exame_solicitado(request):
-    template_name = 'exame/list_exame_solicitado.html'
+    template_name = 'exameSolicitado/list_exame_solicitado.html'
     exames = ExameSolicitado.objects.all()
 
     context = {
@@ -36,7 +36,7 @@ def list_exame_solicitado(request):
     return render(request, template_name, context)
 
 def edit_exame_solicitado(request, id_exame_solicitado):
-    template_name = 'exame/add_exame_solicitado.html'
+    template_name = 'exameSolicitado/add_exame_solicitado.html'
     context = {}
 
     exame = get_object_or_404(ExameSolicitado, id=id_exame_solicitado)
@@ -54,7 +54,7 @@ def edit_exame_solicitado(request, id_exame_solicitado):
     return render(request, template_name, context)
 
 def delete_exame_solicitado(request, id_exame_solicitado):
-    template_name = 'exame/delete_exame_solicitado.html'
+    template_name = 'exameSolicitado/delete_exame_solicitado.html'
 
     exame = get_object_or_404(ExameSolicitado, id=id_exame_solicitado)
 
