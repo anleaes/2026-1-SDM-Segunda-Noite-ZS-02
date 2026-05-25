@@ -3,3 +3,6 @@
 /apps/categories/migrations/*
 /apps/categories/__pycache__/*
 /apps/categories/migrations/*
+/apps/cid/migrations/*
+.vscode/*
+/apps/cid/__pycache__/*
