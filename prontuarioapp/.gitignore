@@ -16,3 +16,5 @@
 settings.json
 /apps/examesolicitado/__pycache__/*
 /apps/examesolicitado/migrations/*
+/apps/resultadoexame/__pycache__/*
+/apps/resultadoexame/migrations/*
