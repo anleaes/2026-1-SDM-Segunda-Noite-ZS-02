@@ -1,5 +1,9 @@
 /prontuarioapp/__pycache__/*
-/apps/categories/__pycache__/*
-/apps/categories/migrations/*
-/apps/categories/__pycache__/*
-/apps/categories/migrations/*
+/apps/anamnese/__pycache__/*
+/apps/anamnese/migrations/*
+/apps/medico/__pycache__/*
+/apps/medico/migrations/*
+/apps/paciente/__pycache__/*
+/apps/paciente/migrations/*
+/apps/pessoa/__pycache__/*
+/apps/pessoa/migrations/*
