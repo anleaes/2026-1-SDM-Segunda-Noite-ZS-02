@@ -6,7 +6,6 @@
 <head>
 
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -15,7 +14,7 @@
     <title>
 
         {% block title %}
-            Prontuário Médico
+            Sistema de Prontuário Médico
         {% endblock title %}
 
     </title>
@@ -24,72 +23,95 @@
 
 <body>
 
+    <!-- TOPO -->
+
     <header class="menu-topo">
+
+        <h1>
+            Sistema de Prontuário Médico
+        </h1>
 
     </header>
 
-    <br />
+    <!-- MENU -->
 
     <nav class="menu-sistema">
 
+        <!-- Pessoas -->
+
+        <a href="#">
+            <button>Pessoas</button>
+        </a>
+
+        <!-- Pacientes -->
+
+        <a href="#">
+            <button>Pacientes</button>
+        </a>
+
+        <!-- Médicos -->
+
+        <a href="#">
+            <button>Médicos</button>
+        </a>
+
+        <!-- Consultas -->
+
+        <a href="#">
+            <button>Consultas</button>
+        </a>
+
+        <!-- Anamnese -->
+
+        <a href="#">
+            <button>Anamnese</button>
+        </a>
+
+        <!-- Receitas -->
+
+        <a href="#">
+            <button>Receitas</button>
+        </a>
+
+        <!-- Receita Medicamento -->
+
+        <a href="#">
+            <button>Receita Medicamento</button>
+        </a>
+
+        <!-- Medicamentos -->
+
+        <a href="#">
+            <button>Medicamentos</button>
+        </a>
+
+        <!-- Exames -->
+
+        <a href="#">
+            <button>Exames</button>
+        </a>
+
+        <!-- Resultado Exame -->
+
+        <a href="#">
+            <button>Resultado Exame</button>
+        </a>
+
+        <!-- Atestados -->
+
+        <a href="#">
+            <button>Atestados</button>
+        </a>
+
+        <!-- CID -->
+
         <a href="{% url 'cid:list_cid' %}">
-            <button>
-                Lista de CIDs
-            </button>
-        </a>
-
-        <a href="{% url 'cid:add_cid' %}">
-            <button>
-                Novo CID
-            </button>
-        </a>
-
-        <a href="/cid/api/">
-            <button>
-                API CIDs
-            </button>
-        </a>
-
-        <a href="#">
-            <button>
-                Pacientes
-            </button>
-        </a>
-
-        <a href="#">
-            <button>
-                Consultas
-            </button>
-        </a>
-
-        <a href="#">
-            <button>
-                Médicos
-            </button>
+            <button>CIDs</button>
         </a>
 
     </nav>
 
-    <br />
-
-    <section class="busca">
-
-        <form action="" method="GET">
-
-            <input
-                name="query"
-                type="text"
-                placeholder="Buscar CID"
-                aria-label="Buscar"
-            >
-
-            <button type="submit">
-                Buscar
-            </button>
-
-        </form>
-
-    </section>
+    <!-- CONTEÚDO -->
 
     <main class="conteudo">
 
@@ -98,8 +120,6 @@
         {% endblock body %}
 
     </main>
-
-    <script src="{% static 'js/script.js' %}"></script>
 
 </body>
 
