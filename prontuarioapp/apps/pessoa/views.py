@@ -10,62 +10,62 @@ class PessoaViewSet(viewsets.ModelViewSet):
     queryset = Pessoa.objects.all()
     serializer_class = PessoaSerializer
 
-def add_pessoa(request):
-    template_name = 'pessoa/add_pessoa.html'
-    context = {}
+# def add_pessoa(request):
+#     template_name = 'pessoa/add_pessoa.html'
+#     context = {}
 
-    if request.method == 'POST':
-        form = PessoaForm(request.POST)
+#     if request.method == 'POST':
+#         form = PessoaForm(request.POST)
 
-        if form.is_valid():
-            pessoa = form.save(commit=False)
-            pessoa.save()
-            return redirect('pessoa:list_pessoa')
+#         if form.is_valid(): 
+#             pessoa = form.save(commit=False)
+#             pessoa.save()
+#             return redirect('pessoa:list_pessoa')
 
-    form = PessoaForm()
-    context['form'] = form
+#     form = PessoaForm()
+#     context['form'] = form
 
-    return render(request, template_name, context)
+#     return render(request, template_name, context)
 
-def list_pessoa(request):
-    template_name = 'pessoa/list_pessoa.html'
-    pessoas = Pessoa.objects.all()
+# def list_pessoa(request):
+#     template_name = 'pessoa/list_pessoa.html'
+#     pessoas = Pessoa.objects.all()
 
-    context = {
-        'pessoas': pessoas
-    }
+#     context = {
+#         'pessoas': pessoas
+#     }
 
-    return render(request, template_name, context)
+#     return render(request, template_name, context)
 
-def edit_pessoa(request, id_pessoa):
-    template_name = 'pessoa/add_pessoa.html'
-    context = {}
+# def edit_pessoa(request, id_pessoa):
+#     template_name = 'pessoa/add_pessoa.html'
+#     context = {}
 
-    pessoa = get_object_or_404(Pessoa, id=id_pessoa)
+#     pessoa = get_object_or_404(Pessoa, id=id_pessoa)
 
-    if request.method == 'POST':
-        form = PessoaForm(request.POST, instance=pessoa)
+#     if request.method == 'POST':
+#         form = PessoaForm(request.POST, instance=pessoa)
 
-        if form.is_valid():
-            form.save()
-            return redirect('pessoa:list_pessoa')
+#         if form.is_valid():
+#             form.save()
+#             return redirect('pessoa:list_pessoa')
 
-    form = PessoaForm(instance=pessoa)
-    context['form'] = form
+#     form = PessoaForm(instance=pessoa)
+#     context['form'] = form
 
-    return render(request, template_name, context)
+#     return render(request, template_name, context)
 
-def delete_pessoa(request, id_pessoa):
-    template_name = 'pessoa/delete_pessoa.html'
+# def delete_pessoa(request, id_pessoa):
+#     template_name = 'pessoa/delete_pessoa.html'
 
-    pessoa = get_object_or_404(Pessoa, id=id_pessoa)
+#     pessoa = get_object_or_404(Pessoa, id=id_pessoa)
 
-    if request.method == 'POST':
-        pessoa.delete()
-        return redirect('pessoa:list_pessoa')
+#     if request.method == 'POST':
+#         pessoa.delete()
+#         return redirect('pessoa:list_pessoa')
 
-    context = {
-        'pessoa': pessoa
-    }
+#     context = {
+#         'pessoa': pessoa
+#     }
 
-    return render(request, template_name, context)
+#     return render(request, template_name, context)
