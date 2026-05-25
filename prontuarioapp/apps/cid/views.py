@@ -57,6 +57,18 @@ def edit_cid(request, id_cid):
     return render(request, template_name, context)
 
 def delete_cid(request, id_cid):
+
+    template_name = 'cid/delete_cid.html'
+
     cid = get_object_or_404(Cid, id=id_cid)
-    cid.delete()
-    return redirect('cid:list_cid')
+
+    if request.method == 'POST':
+        cid.delete()
+        return redirect('cid:list_cid')
+
+    context = {
+        'cid': cid
+    }
+
+    return render(request, template_name, context)
+

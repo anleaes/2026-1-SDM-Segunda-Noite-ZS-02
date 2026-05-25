@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Excluir CID - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Excluir CID</b>
+
+<br />
+<br />
+
+<p>
+
+    Tem certeza que deseja excluir o CID:
+
+</p>
+
+<br />
+
+<ul>
+
+    <li>
+        <b>Código:</b> {{ cid.cod_cid }}
+    </li>
+
+    <li>
+        <b>Descrição:</b> {{ cid.descricao }}
+    </li>
+
+    <li>
+        <b>Tipo:</b> {{ cid.tipo }}
+    </li>
+
+</ul>
+
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'cid:list_cid' %}">
+    Cancelar
+</a>
+
+{% endblock body %}
