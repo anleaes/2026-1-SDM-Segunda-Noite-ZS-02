@@ -3,3 +3,4 @@
 /apps/categories/migrations/*
 /apps/categories/__pycache__/*
 /apps/categories/migrations/*
+.DS_Store
