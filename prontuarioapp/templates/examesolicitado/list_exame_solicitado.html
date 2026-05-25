@@ -46,9 +46,9 @@
             <td>{{ exame.consulta }}</td>
 
             <td>
-                <a href="{% url 'exame:edit_exame_solicitado' exame.id %}">Editar</a>
+                <a href="{% url 'exameSolicitado:edit_exame_solicitado' exame.id %}">Editar</a>
                 |
-                <a href="{% url 'exame:delete_exame_solicitado' exame.id %}">Excluir</a>
+                <a href="{% url 'exameSolicitado:delete_exame_solicitado' exame.id %}">Excluir</a>
             </td>
         </tr>
 

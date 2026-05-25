@@ -19,7 +19,7 @@ def add_exame_solicitado(request):
         if form.is_valid():
             exame = form.save(commit=False)
             exame.save()
-            return redirect('exame:list_exame_solicitado')
+            return redirect('exameSolicitado:list_exame_solicitado')
 
     form = ExameSolicitadoForm()
     context['form'] = form
@@ -46,7 +46,7 @@ def edit_exame_solicitado(request, id_exame_solicitado):
 
         if form.is_valid():
             form.save()
-            return redirect('exame:list_exame_solicitado')
+            return redirect('exameSolicitado:list_exame_solicitado')
 
     form = ExameSolicitadoForm(instance=exame)
     context['form'] = form
@@ -60,7 +60,7 @@ def delete_exame_solicitado(request, id_exame_solicitado):
 
     if request.method == 'POST':
         exame.delete()
-        return redirect('exame:list_exame_solicitado')
+        return redirect('exameSolicitado:list_exame_solicitado')
 
     context = {
         'exame': exame
