@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'consulta.apps.ConsultaConfig',
     'receita.apps.ReceitaConfig',
     'receitamedicamento.apps.ReceitamedicamentoConfig',
+
 ]
 
 MIDDLEWARE = [
