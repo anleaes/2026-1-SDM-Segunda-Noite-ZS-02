@@ -44,6 +44,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'cid.apps.CidConfig',
+    'medicamento.apps.MedicamentoConfig',
+    'consulta.apps.ConsultaConfig',
+    'receita.apps.ReceitaConfig',
+    'receitamedicamento.apps.ReceitamedicamentoConfig',
 ]
 
 MIDDLEWARE = [
