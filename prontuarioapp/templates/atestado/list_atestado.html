@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Atestados - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Atestados - Prontuário Médico</b>
+
+<br />
+<br />
+
+<table border="1" cellpadding="5">
+
+    <thead>
+        <tr>
+            <th>Código</th>
+            <th>Data Início</th>
+            <th>Dias</th>
+            <th>Tipo</th>
+            <th>Consulta</th>
+            <th>CID</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for atestado in atestados %}
+
+        <tr>
+            <td>{{ atestado.codigo_autenticacao }}</td>
+            <td>{{ atestado.data_inicio_afastamento }}</td>
+            <td>{{ atestado.quantidade_dias }}</td>
+            <td>{{ atestado.tipo_atestado }}</td>
+            <td>{{ atestado.consulta }}</td>
+            <td>{{ atestado.cid }}</td>
+
+            <td>
+                <a href="{% url 'atestado:edit_atestado' atestado.id %}">Editar</a>
+                |
+                <a href="{% url 'atestado:delete_atestado' atestado.id %}">Excluir</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<br />
+
+<a href="{% url 'atestado:add_atestado' %}">
+    Novo Atestado
+</a>
+
+{% endblock body %}
