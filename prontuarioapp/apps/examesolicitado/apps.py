@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class ExamesolicitadoConfig(AppConfig):
     name = 'examesolicitado'
-    verbose_name = 'Exames solicitados'
+    verbose_name = 'examesSolicitados'
