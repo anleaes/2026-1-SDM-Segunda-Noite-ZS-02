@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Prescrições - {{ block.super }}{% endblock title %}
+
+{% block body %}
+<br />
+<b>Medicamentos Vinculados às Receitas</b>
+<br /><br />
+
+<a href="{% url 'receitamedicamento:add_receitamedicamento' %}">[+] Vincular Medicamento</a>
+<br /><br />
+
+<table border="1" cellpadding="5" cellspacing="0">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Receita (ID)</th>
+            <th>Medicamento</th>
+            <th>Dosagem</th>
+            <th>Concentração</th>
+            <th>Frequência</th>
+            <th>Duração</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in receitamedicamentos %}
+        <tr>
+            <td>{{ item.id }}</td>
+            <td>{{ item.receita.id }}</td>
+            <td>{{ item.medicamento.nome_referencia }}</td>
+            <td>{{ item.dose }}</td>
+            <td>{{ item.concentracao }}</td>
+            <td>{{ item.frequencia }}</td>
+            <td>{{ item.duracao_dias }} dias</td>
+            <td>
+                <a href="{% url 'receitamedicamento:edit_receitamedicamento' item.id %}">Editar</a> | 
+                <a href="{% url 'receitamedicamento:delete_receitamedicamento' item.id %}">Remover</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="8">Nenhum medicamento vinculado a receitas ainda.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock body %}
