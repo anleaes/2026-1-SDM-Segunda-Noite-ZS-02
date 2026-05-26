@@ -1,45 +1,117 @@
-list receita
 {% extends 'base.html' %}
 
-{% block title %}Lista de Receitas - {{ block.super }}{% endblock title %}
+{% block title %}
+    Lista de Receitas - {{ block.super }}
+{% endblock title %}
 
 {% block body %}
+
 <br />
-<b>Lista de Receitas Médicas</b>
-<br /><br />
 
-<a href="{% url 'receita:add_receita' %}">[+] Adicionar Nova Receita</a>
-<br /><br />
+<b>Lista de Receitas</b>
 
-<table border="1" cellpadding="5" cellspacing="0">
-    <thead>
+<br />
+<br />
+
+<a href="{% url 'receita:add_receita' %}">
+    Adicionar Receita
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="10">
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Consulta</th>
+
+        <th>Data Emissão</th>
+
+        <th>Validade</th>
+
+        <th>Medicamentos</th>
+
+        <th>Ações</th>
+
+    </tr>
+
+    {% for receita in receitas %}
+
         <tr>
-            <th>ID</th>
-            <th>Consulta</th>
-            <th>Emissão</th>
-            <th>Validade</th>
-            <th>Digital?</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for receita in receitas %}
-        <tr>
-            <td>{{ receita.id }}</td>
-            <td>{{ receita.consulta }}</td>
-            <td>{{ receita.data_emissao|date:"d/m/Y" }}</td>
-            <td>{{ receita.validade|date:"d/m/Y" }}</td>
-            <td>{% if receita.e_digital %}Sim{% else %}Não{% endif %}</td>
+
             <td>
-                <a href="{% url 'receita:edit_receita' receita.id %}">Editar</a> | 
-                <a href="{% url 'receita:delete_receita' receita.id %}">Excluir</a>
+                {{ receita.id }}
             </td>
+
+            <td>
+                {{ receita.consulta }}
+            </td>
+
+            <td>
+                {{ receita.data_emissao }}
+            </td>
+
+            <td>
+                {{ receita.validade }}
+            </td>
+
+            <td>
+
+                <ul>
+
+                    {% for detalhe in receita.detalhes_medicamentos.all %}
+
+                        <li>
+
+                            {{ detalhe.medicamento }}
+
+                            -
+                            
+                            {{ detalhe.dose }}
+
+                            -
+
+                            {{ detalhe.frequencia }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </td>
+
+            <td>
+
+                <a href="{% url 'receita:edit_receita' receita.id %}">
+                    Editar
+                </a>
+
+                |
+
+                <a href="{% url 'receita:delete_receita' receita.id %}">
+                    Excluir
+                </a>
+
+            </td>
+
         </tr>
-        {% empty %}
+
+    {% empty %}
+
         <tr>
-            <td colspan="6">Nenhuma receita cadastrada.</td>
+
+            <td colspan="6">
+                Nenhuma receita cadastrada.
+            </td>
+
         </tr>
-        {% endfor %}
-    </tbody>
+
+    {% endfor %}
+
 </table>
+
 {% endblock body %}

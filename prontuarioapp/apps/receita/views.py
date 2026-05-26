@@ -3,7 +3,10 @@ from rest_framework import viewsets
 
 from .models import Receita
 from .serializer import ReceitaSerializer
-from .forms import ReceitaForm
+from .forms import (
+    ReceitaForm,
+    ReceitaMedicamentoFormSet
+)
 
 # Create your views here.
 class ReceitaViewSet(viewsets.ModelViewSet):
@@ -11,59 +14,110 @@ class ReceitaViewSet(viewsets.ModelViewSet):
     serializer_class = ReceitaSerializer
 
 def list_receita(request):
-    template_name = 'receita/list_receita.html'
-    receitas = Receita.objects.all().order_by('-data_emissao')
+
+    receitas = Receita.objects.all()
 
     context = {
         'receitas': receitas
     }
 
-    return render(request, template_name, context)
+    return render(
+        request,
+        'receita/list_receita.html',
+        context
+    )
+
 
 def add_receita(request):
-    template_name = 'receita/add_receita.html'
-    context = {}
 
     if request.method == 'POST':
+
         form = ReceitaForm(request.POST)
 
-        if form.is_valid():
-            form.save()
+        formset = ReceitaMedicamentoFormSet(request.POST)
+
+        if form.is_valid() and formset.is_valid():
+
+            receita = form.save()
+
+            formset.instance = receita
+            formset.save()
+
             return redirect('receita:list_receita')
 
-    form = ReceitaForm()
-    context['form'] = form
+    else:
 
-    return render(request, template_name, context)
+        form = ReceitaForm()
+
+        formset = ReceitaMedicamentoFormSet()
+
+    context = {
+        'form': form,
+        'formset': formset
+    }
+
+    return render(
+        request,
+        'receita/add_receita.html',
+        context
+    )
+
 
 def edit_receita(request, id_receita):
-    template_name = 'receita/add_receita.html'
-    context = {}
 
-    receita = get_object_or_404(Receita, id=id_receita)
+    receita = get_object_or_404(
+        Receita,
+        pk=id_receita
+    )
 
     if request.method == 'POST':
-        form = ReceitaForm(request.POST, instance=receita)
 
-        if form.is_valid():
+        form = ReceitaForm(
+            request.POST,
+            instance=receita
+        )
+
+        formset = ReceitaMedicamentoFormSet(
+            request.POST,
+            instance=receita
+        )
+
+        if form.is_valid() and formset.is_valid():
+
             form.save()
+            formset.save()
+
             return redirect('receita:list_receita')
 
-    form = ReceitaForm(instance=receita)
-    context['form'] = form
+    else:
 
-    return render(request, template_name, context)
+        form = ReceitaForm(
+            instance=receita
+        )
+
+        formset = ReceitaMedicamentoFormSet(
+            instance=receita
+        )
+
+    context = {
+        'form': form,
+        'formset': formset
+    }
+
+    return render(
+        request,
+        'receita/add_receita.html',
+        context
+    )
+
 
 def delete_receita(request, id_receita):
-    template_name = 'receita/delete_receita.html'
-    context = {}
 
-    receita = get_object_or_404(Receita, id=id_receita)
+    receita = get_object_or_404(
+        Receita,
+        pk=id_receita
+    )
 
-    if request.method == 'POST':
-        receita.delete()
-        return redirect('receita:list_receita')
+    receita.delete()
 
-    context['receita'] = receita
-
-    return render(request, template_name, context)
+    return redirect('receita:list_receita')

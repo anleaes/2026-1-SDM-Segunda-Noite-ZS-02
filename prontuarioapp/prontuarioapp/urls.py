@@ -31,6 +31,5 @@ urlpatterns = [
     path('consulta/', include('consulta.urls')),
     path('medicamento/', include('medicamento.urls', namespace='medicamento')),
     path('receita/', include('receita.urls', namespace='receita')),
-    path('receitaMedicamento/', include('receitaMedicamento.urls', namespace='receitamedicamento')),
 ]
 

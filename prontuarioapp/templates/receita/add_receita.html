@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
 
     {% if form.instance.id %}
-        Editar Prescrição - {{ block.super }}
+        Editar Receita - {{ block.super }}
     {% else %}
-        Adicionar Prescrição - {{ block.super }}
+        Adicionar Receita - {{ block.super }}
     {% endif %}
 
 {% endblock title %}
@@ -14,7 +16,13 @@
 
 <br />
 
-<b>{% if form.instance.id %}Editar{% else %}Adicionar{% endif %} Prescrição de Medicamento</b>
+<b>
+    {% if form.instance.id %}
+        Editar Receita
+    {% else %}
+        Adicionar Receita
+    {% endif %}
+</b>
 
 <br />
 <br />
@@ -23,48 +31,120 @@
 
     {% csrf_token %}
 
-    <label>Receita</label>
+    <h3>Dados da Receita</h3>
+
+    <label>Consulta</label>
     <br />
-    {{ form.receita }}
+    {{ form.consulta }}
     <br /><br />
 
-    <label>Medicamento</label>
+    <label>Data de Emissão</label>
     <br />
-    {{ form.medicamento }}
+    {{ form.data_emissao }}
     <br /><br />
 
-    <label>Frequência (Ex: 8h em 8h)</label>
+    <label>Validade</label>
     <br />
-    {{ form.frequencia }}
+    {{ form.validade }}
     <br /><br />
 
-    <label>Duração em Dias</label>
+    <label>Instruções</label>
     <br />
-    {{ form.duracao_dias }}
+    {{ form.instrucoes }}
     <br /><br />
 
-    <label>Dose (Ex: 1 comprimido)</label>
+    <label>É Digital?</label>
     <br />
-    {{ form.dose }}
+    {{ form.e_digital }}
     <br /><br />
 
-    <label>Concentração (Ex: 500mg)</label>
+    <hr />
+
+    <h3>Medicamentos Prescritos</h3>
+
+    {{ formset.management_form }}
+
+    <div id="formset-container">
+
+        {% for medicamento_form in formset %}
+
+            <div
+                class="medicamento-form"
+                style="
+                    border:1px solid #ccc;
+                    padding:15px;
+                    margin-bottom:15px;
+                "
+            >
+
+                {{ medicamento_form.errors }}
+
+                <label>Medicamento</label>
+                <br />
+                {{ medicamento_form.medicamento }}
+                <br /><br />
+
+                <label>Frequência</label>
+                <br />
+                {{ medicamento_form.frequencia }}
+                <br /><br />
+
+                <label>Duração em Dias</label>
+                <br />
+                {{ medicamento_form.duracao_dias }}
+                <br /><br />
+
+                <label>Dose</label>
+                <br />
+                {{ medicamento_form.dose }}
+                <br /><br />
+
+                <label>Concentração</label>
+                <br />
+                {{ medicamento_form.concentracao }}
+                <br /><br />
+
+                {% if medicamento_form.instance.id %}
+
+                    <label>Excluir</label>
+                    {{ medicamento_form.DELETE }}
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <button
+        type="button"
+        id="add-form"
+    >
+        + Adicionar Medicamento
+    </button>
+
     <br />
-    {{ form.concentracao }}
-    <br /><br />
+    <br />
 
     <button type="submit">
+
         {% if form.instance.id %}
-            Atualizar Prescrição
+            Atualizar Receita
         {% else %}
-            Salvar Prescrição
+            Salvar Receita
         {% endif %}
+
     </button>
 
 </form>
 
 <br />
 
-<a href="{% url 'receita:list_receita' %}">Voltar para a lista de prescrições</a>
+<a href="{% url 'receita:list_receita' %}">
+    Voltar para Lista de Receitas
+</a>
+
+<script src="{% static 'js/receita_formset.js' %}"></script>
 
 {% endblock body %}
