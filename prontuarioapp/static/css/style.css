@@ -33,7 +33,7 @@ body {
 }
 
 .menu-sistema a {
-    color: #3498db;        
+    color: #3498db;       
     text-decoration: none;  /* não haja sublinhado padrão */
     transition: color 0.2s ease;
 }
@@ -107,20 +107,32 @@ label {
 }
 
 /* =========================
-   INPUTS
+   INPUTS (Campos de texto)
 ========================= */
-
-input,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
 select,
 textarea {
     width: 100%;
     padding: 14px;
     margin-top: 6px;
+    margin-bottom: 15px; /* Adiciona respiro entre campos */
     border: 1px solid #ced4da;
     border-radius: 8px;
     font-size: 15px;
     box-sizing: border-box;
     transition: border-color 0.2s;
+}
+
+/* Ajuste específico para Checkboxes (O que estava causando o problema) */
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    padding: 0;
+    cursor: pointer;
 }
 
 input:focus {
