@@ -14,3 +14,4 @@ settings.json
 /apps/receitaMedicamento/__pycache__/*
 /apps/anamnese/__pycache__/*
 .DS_Store
+
