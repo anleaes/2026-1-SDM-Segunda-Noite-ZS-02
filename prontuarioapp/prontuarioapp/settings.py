@@ -43,6 +43,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'pessoa.apps.PessoaConfig',
+    'medico.apps.MedicoConfig',
+    'paciente.apps.PacienteConfig',
+    'anamnese.apps.AnamneseConfig',
+    'cid.apps.CidConfig',
+    'consulta.apps.ConsultaConfig',
+    'atestado.apps.AtestadoConfig',
+    'examesolicitado.apps.ExamesolicitadoConfig',
+    'resultadoexame.apps.ResultadoexameConfig',
+    'medicamento.apps.MedicamentoConfig',
+    'receita.apps.ReceitaConfig',
+    'receitaMedicamento.apps.ReceitamedicamentoConfig',
 ]
 
 MIDDLEWARE = [
@@ -60,7 +72,7 @@ ROOT_URLCONF = 'prontuarioapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR, 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,4 +134,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]

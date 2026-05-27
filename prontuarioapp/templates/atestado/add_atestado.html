@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Adicionar Atestado - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Cadastro de Atestado - Prontuário Médico</b>
+
+<br />
+<br />
+
+<form action="" method="POST">
+
+{% csrf_token %}
+
+    <label>Código de Autenticação</label>
+    <br />
+    {{ form.codigo_autenticacao }}
+    <br />
+    <br />
+
+    <label>Data Início do Afastamento</label>
+    <br />
+    {{ form.data_inicio_afastamento }}
+    <br />
+    <br />
+
+    <label>Quantidade de Dias</label>
+    <br />
+    {{ form.quantidade_dias }}
+    <br />
+    <br />
+
+    <label>Tipo de Atestado</label>
+    <br />
+    {{ form.tipo_atestado }}
+    <br />
+    <br />
+
+    <label>Consulta</label>
+    <br />
+    {{ form.consulta }}
+    <br />
+    <br />
+
+    <label>CID</label>
+    <br />
+    {{ form.cid }}
+    <br />
+    <br />
+
+    <button type="submit">
+        Salvar Atestado
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'atestado:list_atestado' %}">
+    Voltar para Lista de Atestados
+</a>
+
+{% endblock body %}

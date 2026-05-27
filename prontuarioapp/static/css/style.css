@@ -1,0 +1,169 @@
+/* =========================
+   ESTILO GERAL
+========================= */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #f4f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #2c3e50;
+}
+
+/* =========================
+   TOPO
+========================= */
+
+.menu-topo {
+    background-color: #0d6efd;
+    padding: 20px;
+    text-align: center;
+}
+
+/* =========================
+   MENU
+========================= */
+
+.menu-sistema {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.menu-sistema a {
+    text-decoration: none;
+}
+
+.menu-sistema button {
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
+    padding: 12px 18px;
+    margin: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.menu-sistema button:hover {
+    background-color: #e9ecef;
+}
+
+/* =========================
+   CONTEÚDO
+========================= */
+
+.conteudo {
+    width: 90%;
+    max-width: 1100px;
+    margin: 30px auto;
+}
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+form {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   TÍTULOS
+========================= */
+
+b {
+    font-size: 24px;
+    color: #0d6efd;
+}
+
+/* =========================
+   LABELS
+========================= */
+
+label {
+    font-weight: bold;
+    font-size: 15px;
+    color: #34495e;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* =========================
+   BOTÃO SALVAR
+========================= */
+
+form button[type="submit"] {
+    background-color: #198754;
+    color: white;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* =========================
+   TABELA
+========================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+}
+
+table th {
+    border: 1px solid #cccccc;
+    padding: 15px;
+    text-align: left;
+    background-color: #f1f1f1;
+}
+
+table td {
+    border: 1px solid #cccccc;
+    padding: 15px;
+}
+
+table tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a {
+    text-decoration: none;
+}
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+
+    .conteudo {
+        width: 95%;
+    }
+
+    .menu-sistema button {
+        width: 90%;
+    }
+
+}

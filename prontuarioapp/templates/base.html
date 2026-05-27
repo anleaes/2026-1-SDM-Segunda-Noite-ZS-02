@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <title>
+
+        {% block title %}
+            Sistema de Prontuário Médico
+        {% endblock title %}
+
+    </title>
+
+</head>
+
+<body>
+
+    <!-- TOPO -->
+
+    <header class="menu-topo">
+
+        <h1>
+            Sistema de Prontuário Médico
+        </h1>
+
+    </header>
+
+    <!-- MENU -->
+
+    <nav class="menu-sistema">
+        
+        <!-- Pacientes -->
+
+        <a href="{% url 'paciente:list_paciente' %}">
+            <button>Pacientes</button>
+        </a>
+
+        <!-- Médicos -->
+
+        <a href="{% url 'medico:list_medico' %}">
+            <button>Médicos</button>
+        </a>
+
+        <!-- Consultas -->
+
+        <a href="{% url 'consulta:list_consulta' %}">
+            <button>Consultas</button>
+        </a>
+
+        <!-- Anamnese -->
+
+        <a href="{% url 'anamnese:list_anamnese' %}">
+            <button>Anamnese</button>
+        </a>
+
+        <!-- Medicamentos -->
+
+        <a href="{% url 'medicamento:list_medicamento' %}">
+            <button>Medicamentos</button>
+        </a>
+
+        <!-- Exames -->
+
+        <a href="{% url 'examesolicitado:list_exame_solicitado' %}">
+            <button>Exames</button>
+        </a>
+
+        <!-- Resultado Exame -->
+
+        <a href="{% url 'resultadoexame:list_resultado_exame' %}">
+            <button>Resultado Exame</button>
+        </a>
+
+        <!-- Atestados -->
+
+        <a href="{% url 'atestado:list_atestado' %}">
+            <button>Atestados</button>
+        </a>
+
+        <!-- CID -->
+
+        <a href="{% url 'cid:list_cid' %}">
+            <button>CIDs</button>
+        </a>
+
+    </nav>
+
+    <!-- CONTEÚDO -->
+
+    <main class="conteudo">
+
+        {% block body %}
+
+        {% endblock body %}
+
+    </main>
+
+</body>
+
+</html>

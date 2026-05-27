@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Lista de Receitas - {{ block.super }}
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Receitas</b>
+
+<br />
+<br />
+
+<a href="{% url 'receita:add_receita' %}">
+    Adicionar Receita
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="10">
+
+    <tr>
+
+        <th>ID</th>
+
+        <th>Consulta</th>
+
+        <th>Data Emissão</th>
+
+        <th>Validade</th>
+
+        <th>Medicamentos</th>
+
+        <th>Ações</th>
+
+    </tr>
+
+    {% for receita in receitas %}
+
+        <tr>
+
+            <td>
+                {{ receita.id }}
+            </td>
+
+            <td>
+                {{ receita.consulta }}
+            </td>
+
+            <td>
+                {{ receita.data_emissao }}
+            </td>
+
+            <td>
+                {{ receita.validade }}
+            </td>
+
+            <td>
+
+                <ul>
+
+                    {% for detalhe in receita.detalhes_medicamentos.all %}
+
+                        <li>
+
+                            {{ detalhe.medicamento }}
+
+                            -
+                            
+                            {{ detalhe.dose }}
+
+                            -
+
+                            {{ detalhe.frequencia }}
+
+                        </li>
+
+                    {% endfor %}
+
+                </ul>
+
+            </td>
+
+            <td>
+
+                <a href="{% url 'receita:edit_receita' receita.id %}">
+                    Editar
+                </a>
+
+                |
+
+                <a href="{% url 'receita:delete_receita' receita.id %}">
+                    Excluir
+                </a>
+
+            </td>
+
+        </tr>
+
+    {% empty %}
+
+        <tr>
+
+            <td colspan="6">
+                Nenhuma receita cadastrada.
+            </td>
+
+        </tr>
+
+    {% endfor %}
+
+</table>
+
+{% endblock body %}

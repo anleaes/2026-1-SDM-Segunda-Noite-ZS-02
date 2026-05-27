@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Lista de Medicamentos</h2>
+
+<a href="{% url 'medicamento:add_medicamento' %}">Novo Medicamento</a>
+
+<br><br>
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome de Referência</th>
+            <th>Princípio Ativo</th>
+            <th>Categoria</th>
+            <th>Controlado</th>
+            <th>Genérico</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for medicamento in medicamentos %}
+        <tr>
+            <td>{{ medicamento.id }}</td>
+            <td>{{ medicamento.nome_referencia }}</td>
+            <td>{{ medicamento.principio_ativo }}</td>
+            <td>{{ medicamento.categoria }}</td>
+            <td>
+                {% if medicamento.e_controlado %}
+                    Sim
+                {% else %}
+                    Não
+                {% endif %}
+            </td>
+            <td>
+                {% if medicamento.tem_generico %}
+                    Sim
+                {% else %}
+                    Não
+                {% endif %}
+            </td>
+
+            <td>
+                <a href="{% url 'medicamento:edit_medicamento' medicamento.id %}">Editar</a>
+                |
+                <a href="{% url 'medicamento:delete_medicamento' medicamento.id %}">Excluir</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

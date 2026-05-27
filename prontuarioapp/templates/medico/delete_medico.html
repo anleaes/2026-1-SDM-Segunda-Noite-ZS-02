@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Excluir Médico - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Excluir Médico</b>
+
+<br />
+<br />
+
+<p>
+    Tem certeza que deseja excluir o médico:
+</p>
+
+<br />
+
+<ul>
+
+    <li>
+        <b>Nome:</b> {{ medico.nome }} {{ medico.sobrenome }}
+    </li>
+
+    <li>
+        <b>CRM:</b> {{ medico.crm }}
+    </li>
+
+    <li>
+        <b>Especialidade:</b> {{ medico.especialidade }}
+    </li>
+
+</ul>
+
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'medico:list_medico' %}">
+    Cancelar
+</a>
+
+{% endblock body %}

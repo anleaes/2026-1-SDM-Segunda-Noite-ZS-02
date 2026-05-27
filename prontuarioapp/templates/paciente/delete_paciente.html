@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Excluir Paciente - {{ block.super }}
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Excluir Paciente</b>
+
+<br />
+<br />
+
+<p>Tem certeza que deseja excluir o paciente abaixo?</p>
+
+<br />
+
+<ul>
+    <li><b>Nome:</b> {{ paciente.nome }} {{ paciente.sobrenome }}</li>
+    <li><b>CPF:</b> {{ paciente.cpf }}</li>
+    <li><b>Email:</b> {{ paciente.email }}</li>
+</ul>
+
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'paciente:list_paciente' %}">
+    Cancelar
+</a>
+
+{% endblock body %}

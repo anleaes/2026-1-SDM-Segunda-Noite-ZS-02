@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Exames Solicitados - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Exames Solicitados - Prontuário Médico</b>
+
+<br />
+<br />
+
+<table border="1" cellpadding="5">
+
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Preparo</th>
+            <th>Jejum</th>
+            <th>Consulta</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for exame in exames %}
+
+        <tr>
+            <td>{{ exame.nome_exame }}</td>
+            <td>{{ exame.descricao }}</td>
+            <td>{{ exame.preparo }}</td>
+            <td>
+                {% if exame.exige_jejum %}
+                    Sim
+                {% else %}
+                    Não
+                {% endif %}
+            </td>
+            <td>{{ exame.consulta }}</td>
+
+            <td>
+                <a href="{% url 'exameSolicitado:edit_exame_solicitado' exame.id %}">Editar</a>
+                |
+                <a href="{% url 'exameSolicitado:delete_exame_solicitado' exame.id %}">Excluir</a>
+            </td>
+        </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+<br />
+
+<a href="{% url 'examesolicitado:add_exame_solicitado' %}">
+    Novo Exame
+</a>
+
+{% endblock body %}
