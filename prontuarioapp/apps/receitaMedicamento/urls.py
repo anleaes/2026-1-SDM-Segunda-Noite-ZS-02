@@ -8,4 +8,5 @@ router.register('api', views.ReceitaMedicamentoViewSet, basename='receitamedicam
 
 urlpatterns = [
     path('', include(router.urls)),
+    path('list/', views.list_receitamedicamento, name='list_receitamedicamento'),
 ]
