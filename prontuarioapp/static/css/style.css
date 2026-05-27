@@ -50,9 +50,13 @@ body {
     transition: all 0.3s ease;
 }
 
+
 .menu-sistema button:hover {
-    background-color: #e9ecef;
+    background-color: #f1f3f5;
+    transform: translateX(4px); /* Move 4px para a direita */
+    transition: transform 0.2s ease; /* Anima apenas o movimento horizontal */
 }
+
 
 /* =========================
    CONTEÚDO
