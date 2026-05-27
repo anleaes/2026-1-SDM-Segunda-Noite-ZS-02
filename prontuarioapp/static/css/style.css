@@ -124,14 +124,21 @@ input:focus {
 ========================= */
 
 form button[type="submit"] {
-    background-color: #198754;
+    background-color: #27ae60;
     color: white;
     border: none;
-    padding: 14px 20px;
-    border-radius: 8px;
-    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color 0.3s;
 }
+
+form button[type="submit"]:hover {
+    background-color: #219150;
+}
+
 
 /* =========================
    TABELA
