@@ -38,12 +38,16 @@ body {
 
 .menu-sistema button {
     background-color: #ffffff;
-    border: 1px solid #ced4da;
-    padding: 12px 18px;
+    border: none;
+    padding: 12px 24px;
     margin: 5px;
-    border-radius: 8px;
+     border-radius: 50px; 
     cursor: pointer;
     font-size: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Profundidade sem traços */
+    transition: all 0.3s ease;
 }
 
 .menu-sistema button:hover {
