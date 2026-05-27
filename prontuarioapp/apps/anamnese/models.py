@@ -21,10 +21,10 @@ class Anamnese(models.Model):
     queixa_principal = models.TextField('Queixa principal')
     
     
-    paciente = models.ForeignKey('Paciente', on_delete=models.CASCADE, verbose_name='Paciente')
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, verbose_name='Paciente')
     
     # on_delete=models.PROTECT impede a exclusão do médico caso ele já possua anamneses registradas
-    medico = models.ForeignKey('Medico', on_delete=models.PROTECT, verbose_name='Médico')
+    medico = models.ForeignKey(Medico, on_delete=models.PROTECT, verbose_name='Médico')
 
     class Meta:
         verbose_name = "Anamnese"

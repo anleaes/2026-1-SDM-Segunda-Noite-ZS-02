@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    {% if form.instance.pk %}
+        Editar Exame Solicitado - {{ block.super }}
+    {% else %}
+        Adicionar Exame Solicitado - {{ block.super }}
+    {% endif %}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>
+    {% if form.instance.pk %}
+        Edição de Exame Solicitado - Prontuário Médico
+    {% else %}
+        Cadastro de Exame Solicitado - Prontuário Médico
+    {% endif %}
+</b>
+
+<br />
+<br />
+
+<form action="" method="POST">
+
+{% csrf_token %}
+
+    <label>Nome do Exame</label>
+    <br />
+    {{ form.nome_exame }}
+    <br />
+    <br />
+
+    <label>Descrição</label>
+    <br />
+    {{ form.descricao }}
+    <br />
+    <br />
+
+    <label>Preparo</label>
+    <br />
+    {{ form.preparo }}
+    <br />
+    <br />
+
+    <label>Exige Jejum</label>
+    <br />
+    {{ form.exige_jejum }}
+    <br />
+    <br />
+
+    <label>Consulta</label>
+    <br />
+    {{ form.consulta }}
+    <br />
+    <br />
+
+    <button type="submit">
+        {% if form.instance.pk %}
+            Atualizar Exame
+        {% else %}
+            Salvar Exame
+        {% endif %}
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'examesolicitado:list_exame_solicitado' %}">
+    Voltar para Lista de Exames
+</a>
+
+{% endblock body %}

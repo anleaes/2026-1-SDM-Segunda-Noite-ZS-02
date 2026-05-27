@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Excluir Resultado de Exame</h2>
+
+<p>
+    Tem certeza que deseja excluir o resultado do exame:
+    <strong>{{ resultado.exame_solicitado.nome_exame }}</strong>?
+</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+</form>
+
+<br>
+
+<a href="{% url 'resultadoexame:list_resultado_exame' %}">
+    Cancelar
+</a>
+
+{% endblock body %}

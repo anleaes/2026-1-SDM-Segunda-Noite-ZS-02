@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<h2>Excluir Medicamento</h2>
+
+<p>Tem certeza que deseja excluir o medicamento abaixo?</p>
+
+<ul>
+    <li><strong>ID:</strong> {{ medicamento.id }}</li>
+    <li><strong>Nome de Referência:</strong> {{ medicamento.nome_referencia }}</li>
+    <li><strong>Princípio Ativo:</strong> {{ medicamento.principio_ativo }}</li>
+    <li><strong>Categoria:</strong> {{ medicamento.categoria }}</li>
+    <li><strong>Controlado:</strong>
+        {% if medicamento.e_controlado %}
+            Sim
+        {% else %}
+            Não
+        {% endif %}
+    </li>
+    <li><strong>Genérico:</strong>
+        {% if medicamento.tem_generico %}
+            Sim
+        {% else %}
+            Não
+        {% endif %}
+    </li>
+</ul>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<br>
+
+<a href="{% url 'medicamento:list_medicamento' %}">
+    Cancelar
+</a>
+
+{% endblock body %}

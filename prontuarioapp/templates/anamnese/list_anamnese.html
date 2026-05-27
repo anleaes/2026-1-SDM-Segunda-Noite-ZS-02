@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Anamneses - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Anamneses</b>
+
+<br />
+<br />
+
+<a href="{% url 'anamnese:add_anamnese' %}">
+    Adicionar Anamnese
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="8">
+
+    <thead>
+        <tr>
+            <th>Paciente</th>
+            <th>Médico</th>
+            <th>Data</th>
+            <th>Queixa Principal</th>
+            <th>Alergias</th>
+            <th>Medicamentos</th>
+            <th>Álcool</th>
+            <th>Fumante</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for anamnese in anamneses %}
+
+            <tr>
+                <td>{{ anamnese.paciente }}</td>
+                <td>{{ anamnese.medico }}</td>
+                <td>{{ anamnese.data_criacao }}</td>
+                <td>{{ anamnese.queixa_principal }}</td>
+                <td>{{ anamnese.alergias }}</td>
+                <td>{{ anamnese.medicamentos }}</td>
+                <td>{{ anamnese.get_alcool_display }}</td>
+                <td>{{ anamnese.get_fumante_display }}</td>
+
+                <td>
+                    <a href="{% url 'anamnese:edit_anamnese' anamnese.id %}">
+                        Editar
+                    </a>
+
+                    |
+
+                    <a href="{% url 'anamnese:delete_anamnese' anamnese.id %}">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="9">
+                    Nenhuma anamnese cadastrada.
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock body %}

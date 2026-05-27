@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Excluir Receita - {{ block.super }}{% endblock title %}
+
+{% block body %}
+<br />
+<b>Confirmar Exclusão</b>
+<br /><br />
+
+<p>Tem certeza que deseja excluir a <b>Receita ID: {{ receita.id }}</b> (Consulta: {{ receita.consulta }})?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" style="color: red;">Confirmar Exclusão</button>
+</form>
+
+<br />
+<a href="{% url 'receita:list_receita' %}">Cancelar e Voltar</a>
+{% endblock body %}

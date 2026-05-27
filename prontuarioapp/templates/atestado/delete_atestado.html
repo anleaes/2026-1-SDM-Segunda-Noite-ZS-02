@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Excluir Atestado - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Excluir Atestado</b>
+
+<br />
+<br />
+
+<p>
+
+    Tem certeza que deseja excluir o Atestado:
+
+</p>
+
+<br />
+
+<ul>
+
+    <li>
+        <b>Código de Autenticação:</b> {{ atestado.codigo_autenticacao }}
+    </li>
+
+    <li>
+        <b>Data Início do Afastamento:</b> {{ atestado.data_inicio_afastamento }}
+    </li>
+
+    <li>
+        <b>Quantidade de Dias:</b> {{ atestado.quantidade_dias }}
+    </li>
+
+    <li>
+        <b>Tipo:</b> {{ atestado.tipo_atestado }}
+    </li>
+
+    <li>
+        <b>Consulta:</b> {{ atestado.consulta }}
+    </li>
+
+    <li>
+        <b>CID:</b> {{ atestado.cid }}
+    </li>
+
+</ul>
+
+<br />
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <button type="submit">
+        Confirmar Exclusão
+    </button>
+
+</form>
+
+<br />
+
+<a href="{% url 'atestado:list_atestado' %}">
+    Cancelar
+</a>
+
+{% endblock body %}

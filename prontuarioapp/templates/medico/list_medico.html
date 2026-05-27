@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}
+
+    Lista de Médicos - {{ block.super }}
+
+{% endblock title %}
+
+{% block body %}
+
+<br />
+
+<b>Lista de Médicos</b>
+
+<br />
+<br />
+
+<a href="{% url 'medico:add_medico' %}">
+    Adicionar Médico
+</a>
+
+<br />
+<br />
+
+<table border="1" cellpadding="8">
+
+    <thead>
+        <tr>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>CRM</th>
+            <th>Especialidade</th>
+            <th>Cargo</th>
+            <th>Ativo</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        {% for medico in medicos %}
+
+            <tr>
+                <td>{{ medico.nome }} {{ medico.sobrenome }}</td>
+                <td>{{ medico.cpf }}</td>
+                <td>{{ medico.crm }}</td>
+                <td>{{ medico.especialidade }}</td>
+                <td>{{ medico.cargo }}</td>
+                <td>
+                    {% if medico.esta_ativo %}
+                        Sim
+                    {% else %}
+                        Não
+                    {% endif %}
+                </td>
+
+                <td>
+                    <a href="{% url 'medico:edit_medico' medico.id %}">
+                        Editar
+                    </a>
+
+                    |
+
+                    <a href="{% url 'medico:delete_medico' medico.id %}">
+                        Excluir
+                    </a>
+                </td>
+            </tr>
+
+        {% empty %}
+
+            <tr>
+                <td colspan="7">
+                    Nenhum médico cadastrado.
+                </td>
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock body %}
