@@ -33,7 +33,15 @@ body {
 }
 
 .menu-sistema a {
+    color: #3498db; /* Azul profissional */
     text-decoration: none;
+    transition: color 0.2s ease, border-bottom 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #27ae60; /* Verde de sucesso ao passar o mouse */
+    border-bottom: 1px solid #27ae60;
 }
 
 .menu-sistema button {
