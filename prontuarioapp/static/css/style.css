@@ -33,9 +33,15 @@ body {
 }
 
 .menu-sistema a {
-    text-decoration: none;
+    color: #3498db;       
+    text-decoration: none;  /* não haja sublinhado padrão */
+    transition: color 0.2s ease;
 }
 
+a:hover {
+    color: #27ae60;         /* passar o mouse */
+    text-decoration: none;  /*  sem linha no hover */
+}
 .menu-sistema button {
     background-color: #ffffff;
     border: none;
@@ -54,7 +60,7 @@ body {
 .menu-sistema button:hover {
     background-color: #f1f3f5;
     transform: translateX(4px); /* Move 4px para a direita */
-    transition: transform 0.2s ease; /* Anima apenas o movimento horizontal */
+    transition: transform 0.2s ease; /*  movimento horizontal */
 }
 
 
@@ -101,20 +107,32 @@ label {
 }
 
 /* =========================
-   INPUTS
+   INPUTS (Campos de texto)
 ========================= */
-
-input,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
 select,
 textarea {
     width: 100%;
     padding: 14px;
     margin-top: 6px;
+    margin-bottom: 15px;
     border: 1px solid #ced4da;
     border-radius: 8px;
     font-size: 15px;
     box-sizing: border-box;
     transition: border-color 0.2s;
+}
+
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+    padding: 0;
+    cursor: pointer;
 }
 
 input:focus {
@@ -144,8 +162,9 @@ form button[type="submit"]:hover {
 }
 
 
+
 /* =========================
-   TABELA
+   TABELA (Azul Forte no Cabeçalho)
 ========================= */
 table {
     width: 100%;
@@ -159,11 +178,12 @@ table {
 }
 
 table th {
-    background-color: #f8f9fa;
-    color: #495057;
+    background-color: #2c3e50; /* Azul Forte corporativo */
+    color: #ffffff;            /* deixei o Texto em branco para contrastar bem */
     padding: 16px;
     text-align: left;
-    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    border-bottom: 2px solid #1a252f; /* tom um pouco mais escuro para os detalhes */
 }
 
 table td {
@@ -181,7 +201,14 @@ table tr:hover {
 ========================= */
 
 a {
-    text-decoration: none;
+    color: #083b5e;         
+    text-decoration: none;  /*  não tem sublinhado padrão */
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: #27ae60;         /* Verde ao passar o mouse */
+    text-decoration: none;  /*sem linha no hover */
 }
 
 /* =========================
