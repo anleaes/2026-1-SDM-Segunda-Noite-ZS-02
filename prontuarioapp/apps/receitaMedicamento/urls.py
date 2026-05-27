@@ -7,5 +7,5 @@ router = routers.SimpleRouter()
 router.register('api', views.ReceitaMedicamentoViewSet, basename='receitamedicamento-api')
 
 urlpatterns = [
-   
+    path('', include(router.urls)),
 ]
