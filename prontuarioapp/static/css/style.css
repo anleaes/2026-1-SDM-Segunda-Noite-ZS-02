@@ -185,13 +185,6 @@ a {
 ========================= */
 
 @media (max-width: 768px) {
-
-    .conteudo {
-        width: 95%;
-    }
-
-    .menu-sistema button {
-        width: 90%;
-    }
-
+    .conteudo { width: 95%; }
+    .menu-sistema button { width: 90%; }
 }
