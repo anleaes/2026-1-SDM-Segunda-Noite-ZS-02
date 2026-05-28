@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
 from .forms import CidForm
 from .serializer import CidSerializer
+from django.db.models import Q
 
 # Create your views here.
 
@@ -68,6 +69,24 @@ def delete_cid(request, id_cid):
 
     context = {
         'cid': cid
+    }
+
+    return render(request, template_name, context)
+
+def search_cid(request):
+    template_name = 'cid/list_cid.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca por código exato/parcial ou por termos da descrição da doença
+        cids = Cid.objects.filter(
+            Q(cod_cid__icontains=query) | Q(descricao__icontains=query)
+        )
+    else:
+        cids = Cid.objects.all()
+
+    context = {
+        'cids': cids
     }
 
     return render(request, template_name, context)
