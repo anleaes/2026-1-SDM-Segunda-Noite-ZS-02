@@ -7,6 +7,8 @@ from .models import Anamnese
 from .serializer import AnamneseSerializer
 from .forms import AnamneseForm
 
+from django.db.models import Q
+
 
 # Create your views here.
 
@@ -70,6 +72,27 @@ def delete_anamnese(request, id_anamnese):
 
     context = {
         'anamnese': anamnese
+    }
+
+    return render(request, template_name, context)
+
+
+def search_anamnese(request):
+    template_name = 'anamnese/list_anamnese.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca relacional por paciente, médico ou termos da queixa principal
+        anamneses = Anamnese.objects.select_related('paciente', 'medico').filter(
+            Q(paciente__nome__icontains=query) | 
+            Q(medico__nome__icontains=query) |
+            Q(queixa_principal__icontains=query)
+        )
+    else:
+        anamneses = Anamnese.objects.select_related('paciente', 'medico').all()
+
+    context = {
+        'anamneses': anamneses
     }
 
     return render(request, template_name, context)
