@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
+from django.db.models import Q
 
 from .models import Medico
 from .serializer import MedicoSerializer
@@ -66,6 +67,25 @@ def delete_medico(request, id_medico):
 
     context = {
         'medico': medico
+    }
+
+    return render(request, template_name, context)
+
+
+def search_medico(request):
+    template_name = 'medico/list_medico.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca se o termo está no nome OU na especialidade do médico
+        medicos = Medico.objects.filter(
+            Q(nome__icontains=query) | Q(especialidade__icontains=query)
+        )
+    else:
+        medicos = Medico.objects.all()
+
+    context = {
+        'medicos': medicos
     }
 
     return render(request, template_name, context)
