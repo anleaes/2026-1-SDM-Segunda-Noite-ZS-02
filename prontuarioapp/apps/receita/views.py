@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
+from django.db.models import Q
 
 from .models import Receita
 from .serializer import ReceitaSerializer
@@ -121,3 +122,24 @@ def delete_receita(request, id_receita):
     receita.delete()
 
     return redirect('receita:list_receita')
+
+def search_receita(request):
+    template_name = 'receita/list_receita.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca por paciente, médico, instruções ou medicamentos prescritos
+        receitas = Receita.objects.filter(
+            Q(consulta__paciente__nome__icontains=query) |
+            Q(consulta__medico__nome__icontains=query) |
+            Q(instrucoes__icontains=query) |
+            Q(medicamentos__nome__icontains=query)
+        ).distinct()
+    else:
+        receitas = Receita.objects.all()
+
+    context = {
+        'receitas': receitas
+    }
+
+    return render(request, template_name, context)
