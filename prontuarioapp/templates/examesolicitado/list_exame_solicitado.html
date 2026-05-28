@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
     Lista de Exames Solicitados - {{ block.super }}
-
 {% endblock title %}
 
 {% block body %}
@@ -14,6 +12,22 @@
 
 <br />
 <br />
+
+<a href="{% url 'exameSolicitado:add_exame_solicitado' %}">
+    Novo Exame
+</a>
+
+<br /><br />
+
+<div style="margin-bottom: 25px;">
+    <form action="{% url 'exameSolicitado:search_exame_solicitado' %}" method="GET">
+        <input name="query" type="text" placeholder="Buscar por exame ou nome do paciente..." 
+               style="padding: 10px; width: 350px; border-radius: 5px; border: 1px solid #ccc;">
+        <button type="submit" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Buscar Exame
+        </button>
+    </form>
+</div>
 
 <table border="1" cellpadding="5">
 
@@ -57,11 +71,5 @@
     </tbody>
 
 </table>
-
-<br />
-
-<a href="{% url 'examesolicitado:add_exame_solicitado' %}">
-    Novo Exame
-</a>
 
 {% endblock body %}
