@@ -1,5 +1,4 @@
 from django.db import models
-
 class Receita(models.Model):
     consulta = models.ForeignKey(
         'consulta.Consulta', 
@@ -26,3 +25,5 @@ class Receita(models.Model):
 
     def __str__(self):
         return f"Receita {self.id} - Consulta {self.consulta_id} ({self.data_emissao})"
+    
+    
