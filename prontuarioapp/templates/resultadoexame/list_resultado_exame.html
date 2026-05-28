@@ -10,6 +10,16 @@
 
 <br><br>
 
+<div style="margin-bottom: 25px;">
+    <form action="{% url 'resultadoexame:search_resultado_exame' %}" method="GET">
+        <input name="query" type="text" placeholder="Buscar por exame, paciente ou laudo..." 
+               style="padding: 10px; width: 350px; border-radius: 5px; border: 1px solid #ccc;">
+        <button type="submit" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Buscar Resultado
+        </button>
+    </form>
+</div>
+
 <table border="1">
     <thead>
         <tr>
