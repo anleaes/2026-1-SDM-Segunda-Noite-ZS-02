@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
+from django.db.models import Q
 
 from .models import Medicamento
 from .serializer import MedicamentoSerializer
@@ -71,6 +72,24 @@ def delete_medicamento(request, id_medicamento):
 
     context = {
         'medicamento': medicamento
+    }
+
+    return render(request, template_name, context)
+
+def search_medicamento(request):
+    template_name = 'medicamento/list_medicamento.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca se o termo está no nome de referência OU no princípio ativo
+        medicamentos = Medicamento.objects.filter(
+            Q(nome_referencia__icontains=query) | Q(principio_ativo__icontains=query)
+        )
+    else:
+        medicamentos = Medicamento.objects.all()
+
+    context = {
+        'medicamentos': medicamentos
     }
 
     return render(request, template_name, context)
