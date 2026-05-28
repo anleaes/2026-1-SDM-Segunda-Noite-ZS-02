@@ -3,6 +3,7 @@ from rest_framework import viewsets
 from .models import ExameSolicitado
 from .serializer import ExameSolicitadoSerializer
 from .forms import ExameSolicitadoForm
+from django.db.models import Q
 
 # Create your views here.
 class ExameSolicitadoViewSet(viewsets.ModelViewSet):
@@ -67,3 +68,23 @@ def delete_exame_solicitado(request, id_exame_solicitado):
     }
 
     return render(request, template_name, context)
+
+def search_exame_solicitado(request):
+    template_name = 'exameSolicitado/list_exame_solicitado.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca pelo nome do exame ou navega pela consulta até o nome do paciente
+        exames = ExameSolicitado.objects.filter(
+            Q(nome_exame__icontains=query) | 
+            Q(consulta__paciente__nome__icontains=query)
+        )
+    else:
+        exames = ExameSolicitado.objects.all()
+
+    context = {
+        'exames': exames
+    }
+
+    return render(request, template_name, context)
+
