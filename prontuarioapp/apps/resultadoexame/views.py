@@ -4,6 +4,8 @@ from rest_framework import viewsets
 from .models import ResultadoExame
 from .forms import ResultadoExameForm
 from .serializer import ResultadoExameSerializer
+from django.db.models import Q
+
 # Create your views here.
 
 class ResultadoExameViewSet(viewsets.ModelViewSet):
@@ -65,5 +67,25 @@ def delete_resultado_exame(request, id_resultado):
         return redirect('resultadoexame:list_resultado_exame')
 
     context['resultado'] = resultado
+
+    return render(request, template_name, context)
+
+def search_resultado_exame(request):
+    template_name = 'resultadoexame/list_resultado_exame.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca tripla: por conclusões, nome do exame ou nome do paciente
+        resultados = ResultadoExame.objects.filter(
+            Q(conclusoes__icontains=query) | 
+            Q(exame_solicitado__nome_exame__icontains=query) |
+            Q(exame_solicitado__consulta__paciente__nome__icontains=query)
+        )
+    else:
+        resultados = ResultadoExame.objects.all()
+
+    context = {
+        'resultados': resultados
+    }
 
     return render(request, template_name, context)
