@@ -4,6 +4,7 @@ from rest_framework import viewsets
 from .models import Consulta
 from .forms import ConsultaForm
 from .serializer import ConsultaSerializer
+from django.db.models import Q
 
 class ConsultaViewSet(viewsets.ModelViewSet):
     queryset = Consulta.objects.all()
@@ -64,5 +65,26 @@ def delete_consulta(request, id_consulta):
         return redirect('consulta:list_consulta')
 
     context['consulta'] = consulta
+
+    return render(request, template_name, context)
+
+
+def search_consulta(request):
+    template_name = 'consulta/list_consulta.html'
+    query = request.GET.get('query')
+
+    if query:
+        # Busca nome do paciente, nome do médico ou pelo motivo da consulta
+        consultas = Consulta.objects.filter(
+            Q(paciente__nome__icontains=query) | 
+            Q(medico__nome__icontains=query) |
+            Q(motivo__icontains=query)
+        ).order_by('-data_agendada')
+    else:
+        consultas = Consulta.objects.all().order_by('-data_agendada')
+
+    context = {
+        'consultas': consultas
+    }
 
     return render(request, template_name, context)
