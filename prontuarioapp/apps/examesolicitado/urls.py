@@ -13,4 +13,5 @@ urlpatterns = [
     path('add/', views.add_exame_solicitado, name='add_exame_solicitado'),
     path('edit/<int:id_exame_solicitado>/', views.edit_exame_solicitado, name='edit_exame_solicitado'),
     path('delete/<int:id_exame_solicitado>/', views.delete_exame_solicitado, name='delete_exame_solicitado'),
+    path('buscar/', views.search_exame_solicitado, name='search_exame_solicitado'),
 ]

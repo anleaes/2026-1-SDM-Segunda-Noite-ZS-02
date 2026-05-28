@@ -14,4 +14,5 @@ urlpatterns = [
     path('add/', views.add_anamnese, name='add_anamnese'),
     path('edit/<int:id_anamnese>/', views.edit_anamnese, name='edit_anamnese'),
     path('delete/<int:id_anamnese>/', views.delete_anamnese, name='delete_anamnese'),
+    path('buscar/', views.search_anamnese, name='search_anamnese'),
 ]

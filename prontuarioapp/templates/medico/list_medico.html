@@ -22,6 +22,16 @@
 <br />
 <br />
 
+<div style="margin-bottom: 25px;">
+    <form action="{% url 'medico:search_medico' %}" method="GET">
+        <input name="query" type="text" placeholder="Buscar médico por nome ou especialidade..." 
+               style="padding: 10px; width: 320px; border-radius: 5px; border: 1px solid #ccc;">
+        <button type="submit" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Buscar Médico
+        </button>
+    </form>
+</div>
+
 <table border="1" cellpadding="8">
 
     <thead>

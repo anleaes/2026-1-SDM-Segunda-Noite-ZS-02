@@ -69,3 +69,19 @@ def delete_paciente(request, id_paciente):
     }
 
     return render(request, template_name, context)
+
+def search_paciente(request):
+    template_name = 'paciente/list_paciente.html'
+    query = request.GET.get('query')
+
+    if query:
+        
+        pacientes = Paciente.objects.filter(nome__icontains=query)
+    else:
+        pacientes = Paciente.objects.all()
+
+    context = {
+        'pacientes': pacientes
+    }
+
+    return render(request, template_name, context)

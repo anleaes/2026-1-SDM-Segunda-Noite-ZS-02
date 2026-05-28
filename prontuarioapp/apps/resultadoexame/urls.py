@@ -14,4 +14,5 @@ urlpatterns = [
     path('add/', views.add_resultado_exame, name='add_resultado_exame'),
     path('edit/<int:id_resultado>/', views.edit_resultado_exame, name='edit_resultado_exame'),
     path('delete/<int:id_resultado>/', views.delete_resultado_exame, name='delete_resultado_exame'),
+    path('buscar/', views.search_resultado_exame, name='search_resultado_exame'),
 ]

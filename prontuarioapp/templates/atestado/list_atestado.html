@@ -1,9 +1,7 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
     Lista de Atestados - {{ block.super }}
-
 {% endblock title %}
 
 {% block body %}
@@ -14,6 +12,22 @@
 
 <br />
 <br />
+
+<a href="{% url 'atestado:add_atestado' %}">
+    Novo Atestado
+</a>
+
+<br /><br />
+
+<div style="margin-bottom: 25px;">
+    <form action="{% url 'atestado:search_atestado' %}" method="GET">
+        <input name="query" type="text" placeholder="Buscar por paciente, médico, CID ou autenticação..." 
+               style="padding: 10px; width: 350px; border-radius: 5px; border: 1px solid #ccc;">
+        <button type="submit" style="padding: 10px 20px; background-color: #2c3e50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+            Buscar Atestado
+        </button>
+    </form>
+</div>
 
 <table border="1" cellpadding="5">
 
@@ -53,11 +67,5 @@
     </tbody>
 
 </table>
-
-<br />
-
-<a href="{% url 'atestado:add_atestado' %}">
-    Novo Atestado
-</a>
 
 {% endblock body %}
