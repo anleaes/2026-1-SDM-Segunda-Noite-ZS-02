@@ -13,4 +13,5 @@ urlpatterns = [
     path('add/', views.add_receita, name='add_receita'),
     path('edit/<int:id_receita>/', views.edit_receita, name='edit_receita'),
     path('delete/<int:id_receita>/', views.delete_receita, name='delete_receita'),
+    path('buscar/', views.search_receita, name='search_receita'),
 ]
