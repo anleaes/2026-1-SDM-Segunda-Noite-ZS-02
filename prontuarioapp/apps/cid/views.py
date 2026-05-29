@@ -13,7 +13,7 @@ class CidViewSet(viewsets.ModelViewSet):
     queryset = Cid.objects.all()
     serializer_class = CidSerializer  
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['codigo', 'descricao', 'ativo']
+    filterset_fields = ['cod_cid', 'descricao']
 
 def add_cid(request):
     template_name = 'cid/add_cid.html'
