@@ -9,7 +9,8 @@ router = routers.SimpleRouter()
 router.register('api', views.CidViewSet, basename='cid')
 
 urlpatterns = [
-    path('', include(router.urls) ),
+    path('', include(router.urls)),
+    
     path('list/', views.list_cid, name='list_cid'),
     path('add/', views.add_cid, name='add_cid'),
     path('edit/<int:id_cid>/', views.edit_cid, name='edit_cid'),
