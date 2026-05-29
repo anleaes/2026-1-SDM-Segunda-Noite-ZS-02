@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from .models import Cid
 from django.shortcuts import render, redirect, get_object_or_404
+from django.db.models import Q # Importante para a busca funcionar!
 from rest_framework import viewsets
+from .models import Cid
 from .forms import CidForm
 from .serializer import CidSerializer
 
@@ -72,3 +72,22 @@ def delete_cid(request, id_cid):
 
     return render(request, template_name, context)
 
+
+# --- FUNÇÃO DE BUSCA DO CID ---
+def search_cid(request):
+    template_name = 'cid/list_cid.html'
+    query = request.GET.get('query')
+
+    if query:
+        cids = Cid.objects.filter(
+            Q(cod_cid__icontains=query) | 
+            Q(descricao__icontains=query)
+        )
+    else:
+        cids = Cid.objects.all()
+
+    context = {
+        'cids': cids
+    }
+
+    return render(request, template_name, context)
