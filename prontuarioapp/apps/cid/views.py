@@ -4,13 +4,16 @@ from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
 from .forms import CidForm
 from .serializer import CidSerializer
+from django_filters.rest_framework import DjangoFilterBackend
+
 
 # Create your views here.
 
 class CidViewSet(viewsets.ModelViewSet):
     queryset = Cid.objects.all()
     serializer_class = CidSerializer  
-
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['codigo', 'descricao', 'ativo']
 
 def add_cid(request):
     template_name = 'cid/add_cid.html'
@@ -68,6 +71,15 @@ def delete_cid(request, id_cid):
 
     context = {
         'cid': cid
+    }
+    
+def search_cid(request):
+    template_name = 'cid/search_cid.html'
+    query = request.GET.get('query', '')
+    cids = Cid.objects.filter(descricao__icontains=query)
+    context = {
+        'cids': cids,
+        'query': query
     }
 
     return render(request, template_name, context)
