@@ -1,12 +1,18 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
-
 from .models import Atestado
 from .forms import AtestadoForm
 from .serializer import AtestadoSerializer
 from django.db.models import Q
 
 # Create your views here.
+
+class AtestadoViewSet(viewsets.ModelViewSet):
+    queryset = Atestado.objects.all()
+    serializer_class = AtestadoSerializer
+    
+
+
 def add_atestado(request):
     template_name = 'atestado/add_atestado.html'
     context = {}
