@@ -9,8 +9,8 @@ class Cid(models.Model):
     status_ativo = models.BooleanField(default=True)
 
     class Meta:
-        verbose_name = 'Funcionario'
-        verbose_name_plural = 'Funcionarios'
+        verbose_name = 'cid'
+        verbose_name_plural = 'cids'
         ordering =['id']
 
     def __str__(self):
