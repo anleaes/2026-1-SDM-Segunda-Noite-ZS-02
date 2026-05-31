@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
-
 from .models import Consulta
 from .forms import ConsultaForm
 from .serializer import ConsultaSerializer
