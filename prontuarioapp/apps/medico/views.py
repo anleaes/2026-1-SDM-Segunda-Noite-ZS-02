@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from .models import Medico
 from .serializer import MedicoSerializer
 from .forms import MedicoForm
@@ -11,6 +11,7 @@ class MedicoViewSet(viewsets.ModelViewSet):
     queryset = Medico.objects.all()
     serializer_class = MedicoSerializer
 
+@login_required(login_url='/contas/login/')
 def add_medico(request):
     template_name = 'medico/add_medico.html'
     context = {}

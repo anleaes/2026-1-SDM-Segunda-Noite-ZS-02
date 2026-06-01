@@ -6,7 +6,7 @@ from rest_framework import viewsets
 from .models import Anamnese
 from .serializer import AnamneseSerializer
 from .forms import AnamneseForm
-
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
 
@@ -16,6 +16,7 @@ class AnamneseViewSet(viewsets.ModelViewSet):
     queryset = Anamnese.objects.all()
     serializer_class = AnamneseSerializer
 
+@login_required(login_url='/contas/login/')
 def add_anamnese(request):
     template_name = 'anamnese/add_anamnese.html'
     context = {}

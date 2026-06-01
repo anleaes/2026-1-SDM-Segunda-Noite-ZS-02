@@ -20,6 +20,7 @@ from pessoa.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('contas/', include('accounts.urls', namespace='accounts')),
     path('', home, name='home'),
     path('cid/', include('cid.urls', namespace='cid')),
     path('atestado/', include('atestado.urls', namespace='atestado')),

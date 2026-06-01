@@ -4,12 +4,14 @@ from .models import ExameSolicitado
 from .serializer import ExameSolicitadoSerializer
 from .forms import ExameSolicitadoForm
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class ExameSolicitadoViewSet(viewsets.ModelViewSet):
     queryset = ExameSolicitado.objects.all()
     serializer_class = ExameSolicitadoSerializer 
 
+@login_required(login_url='/contas/login/')
 def add_exame_solicitado(request):
     template_name = 'exameSolicitado/add_exame_solicitado.html'
     context = {}

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
-
+from django.contrib.auth.decorators import login_required
 from .models import Paciente
 from .forms import PacienteForm
 from .serializer import PacienteSerializer
@@ -10,6 +10,8 @@ class PacienteViewSet(viewsets.ModelViewSet):
     queryset = Paciente.objects.all()
     serializer_class = PacienteSerializer
 
+
+@login_required(login_url='/contas/login/')
 def add_paciente(request):
     template_name = 'paciente/add_paciente.html'
     context = {}

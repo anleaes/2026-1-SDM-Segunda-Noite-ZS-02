@@ -13,6 +13,7 @@ settings.json
 /apps/medicamento/__pycache__/*
 /apps/receitaMedicamento/__pycache__/*
 /apps/anamnese/__pycache__/*
+/apps/accounts/__pycache__/*
 .DS_Store
 /apps/anamnese/migrations/*
 /apps/medico/migrations/*
@@ -27,4 +28,5 @@ settings.json
 /apps/medicamento/migrations/*
 /apps/receitaMedicamento/migrations/*
 /apps/products/migrations/*
+/apps/accounts/migrations/*
 

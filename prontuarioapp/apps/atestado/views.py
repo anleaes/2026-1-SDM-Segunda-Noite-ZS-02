@@ -4,7 +4,7 @@ from .models import Atestado
 from .forms import AtestadoForm
 from .serializer import AtestadoSerializer
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 class AtestadoViewSet(viewsets.ModelViewSet):
@@ -12,7 +12,7 @@ class AtestadoViewSet(viewsets.ModelViewSet):
     serializer_class = AtestadoSerializer
     
 
-
+@login_required(login_url='/contas/login/')
 def add_atestado(request):
     template_name = 'atestado/add_atestado.html'
     context = {}
