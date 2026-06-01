@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'receitaMedicamento.apps.ReceitamedicamentoConfig',
     'accounts.apps.AccountsConfig',
     'core.apps.CoreConfig', 
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'prontuarioapp.urls'
@@ -89,6 +91,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'prontuarioapp.wsgi.application'
+
 
 
 # Database
@@ -147,3 +150,4 @@ STATICFILES_DIRS = [
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+CORS_ALLOW_ALL_ORIGINS = True
