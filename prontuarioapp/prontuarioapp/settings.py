@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,7 +57,6 @@ INSTALLED_APPS = [
     'medicamento.apps.MedicamentoConfig',
     'receita.apps.ReceitaConfig',
     'receitaMedicamento.apps.ReceitamedicamentoConfig',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -147,7 +147,6 @@ STATICFILES_DIRS = [
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
