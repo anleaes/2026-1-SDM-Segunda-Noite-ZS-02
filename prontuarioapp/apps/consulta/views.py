@@ -4,6 +4,7 @@ from .models import Consulta
 from .forms import ConsultaForm
 from .serializer import ConsultaSerializer
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 class ConsultaViewSet(viewsets.ModelViewSet):
     queryset = Consulta.objects.all()
@@ -18,7 +19,7 @@ def list_consulta(request):
     }
 
     return render(request, template_name, context)
-
+@login_required(login_url='/contas/login/')
 def add_consulta(request):
     template_name = 'consulta/add_consulta.html'
     context = {}

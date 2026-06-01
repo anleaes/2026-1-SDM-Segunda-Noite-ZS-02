@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from .models import Receita
 from .serializer import ReceitaSerializer
 from .forms import (
@@ -29,6 +29,7 @@ def list_receita(request):
     )
 
 
+@login_required(login_url='/contas/login/')
 def add_receita(request):
 
     if request.method == 'POST':

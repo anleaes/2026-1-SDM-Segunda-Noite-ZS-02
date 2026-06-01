@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
 from django.db.models import Q
-
+from django.contrib.auth.decorators import login_required
 from .models import Medicamento
 from .serializer import MedicamentoSerializer
 from .forms import MedicamentoForm
@@ -13,6 +13,7 @@ class MedicamentoViewSet(viewsets.ModelViewSet):
     serializer_class = MedicamentoSerializer
 
 
+@login_required(login_url='/contas/login/')
 def add_medicamento(request):
     template_name = 'medicamento/add_medicamento.html'
     context = {}

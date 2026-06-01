@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from rest_framework import viewsets
-
+from django.contrib.auth.decorators import login_required
 from .models import ResultadoExame
 from .forms import ResultadoExameForm
 from .serializer import ResultadoExameSerializer
@@ -22,6 +22,7 @@ def list_resultado_exame(request):
 
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def add_resultado_exame(request):
     template_name = 'resultadoexame/add_resultado_exame.html'
     context = {}

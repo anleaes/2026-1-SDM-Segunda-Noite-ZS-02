@@ -5,6 +5,7 @@ from .models import Cid
 from .forms import CidForm
 from .serializer import CidSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -31,6 +32,7 @@ def add_cid(request):
     context['form'] = form
     return render(request, template_name, context)
 
+@login_required(login_url='/contas/login/')
 def list_cid(request):
     template_name = 'cid/list_cid.html'
     cids = Cid.objects.all()
