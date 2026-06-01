@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'receita.apps.ReceitaConfig',
     'receitaMedicamento.apps.ReceitamedicamentoConfig',
     'accounts.apps.AccountsConfig',
+    'core.apps.CoreConfig', 
 ]
 
 MIDDLEWARE = [

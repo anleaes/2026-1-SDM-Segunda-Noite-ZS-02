@@ -14,6 +14,7 @@ settings.json
 /apps/receitaMedicamento/__pycache__/*
 /apps/anamnese/__pycache__/*
 /apps/accounts/__pycache__/*
+/apps/core/__pycache__/*
 .DS_Store
 /apps/anamnese/migrations/*
 /apps/medico/migrations/*
@@ -29,4 +30,5 @@ settings.json
 /apps/receitaMedicamento/migrations/*
 /apps/products/migrations/*
 /apps/accounts/migrations/*
+/apps/core/migrations/*
 
