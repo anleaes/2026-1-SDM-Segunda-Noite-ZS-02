@@ -7,17 +7,21 @@
   <meta name="description" content="">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>ReviewApp login</title>
-  <link rel="stylesheet" href="{% static 'css/arquivo_com_estilos.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+  <header class="menu-topo">
+    <h1>Sistema de Prontuário Médico</h1>
+  </header>
     <form action="" method="POST">
     {% csrf_token %}
     <b>Identifique-se</b>
-    <br />
+    
     <br />
     <label>Usuario</label>
     <input type="text" id="username" name="username" placeholder="Nome de usuario" required autofocus>
     <br />
+    <br/>
     <label>Senha</label>
     <input type="password" id="password" name="password" placeholder="Digite sua senha" required>
     <br />
