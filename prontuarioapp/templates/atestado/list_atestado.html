@@ -38,7 +38,7 @@
             <th>Dias</th>
             <th>Tipo</th>
             <th>Consulta</th>
-            <th>CID</th>
+            <th>CID(s)</th> <!-- Mudei o título para indicar que pode ter mais de uma -->
             <th>Ações</th>
         </tr>
     </thead>
@@ -53,12 +53,21 @@
             <td>{{ atestado.quantidade_dias }}</td>
             <td>{{ atestado.tipo_atestado }}</td>
             <td>{{ atestado.consulta }}</td>
-            <td>{{ atestado.cid }}</td>
+            
+            <!-- ALTERAÇÃO 1: Loop para exibir as múltiplas CIDs -->
+            <td>
+                {% for c in atestado.cid.all %}
+                    {{ c }}{% if not forloop.last %}, {% endif %}
+                {% empty %}
+                    Nenhum
+                {% endfor %}
+            </td>
 
             <td>
                 <a href="{% url 'atestado:edit_atestado' atestado.id %}">Editar</a>
                 |
-                <a href="{% url 'atestado:delete_atestado' atestado.id %}">Excluir</a>
+                
+                <a href="{% url 'atestado:delete_atestado' atestado.id %}" onclick="return confirm('Tem certeza que deseja excluir este atestado? Esta ação não pode ser desfeita.');">Excluir</a>
             </td>
         </tr>
 

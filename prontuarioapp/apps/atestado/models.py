@@ -13,7 +13,13 @@ class Atestado(models.Model):
         ('OUTRO', 'Outro'),
     ])
     consulta = models.OneToOneField(Consulta, on_delete=models.CASCADE)
-    cid = models.ForeignKey(Cid, on_delete=models.PROTECT)
+    cid = models.ManyToManyField(Cid, related_name='atestados', verbose_name="Cids")
+    
+    class Meta:
+        verbose_name = 'Atestado'
+        verbose_name_plural = 'Atestados'
+        ordering = ['id']
 
     def __str__(self):
         return f"Atestado {self.codigo_autenticacao}"
+    
