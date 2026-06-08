@@ -21,7 +21,7 @@ class Anamnese(models.Model):
     queixa_principal = models.TextField('Queixa principal')
     
     
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, verbose_name='Paciente')
+    paciente = models.OneToOneField(Paciente, on_delete=models.CASCADE, related_name='anamnese', verbose_name='Paciente')
     
     # on_delete=models.PROTECT impede a exclusão do médico caso ele já possua anamneses registradas
     medico = models.ForeignKey(Medico, on_delete=models.PROTECT, verbose_name='Médico')
@@ -29,6 +29,7 @@ class Anamnese(models.Model):
     class Meta:
         verbose_name = "Anamnese"
         verbose_name_plural = "Anamneses"
+        ordering = ['id']  
 
     def __str__(self):
         return f"""
@@ -37,6 +38,6 @@ class Anamnese(models.Model):
         Alergias: {self.alergias}
         Medicamentos em Uso: {self.medicamentos}
         Consumo de Álcool: {self.get_alcool_display()}
-        Fumante: {self.get_fumante_display()}
+        Fumante: {self.get_fumante_display()}      
         --------------------------------------------------
         """
