@@ -6,12 +6,17 @@ from .serializer import AtestadoSerializer
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from cid.models import Cid
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+
 # Create your views here.
 
 class AtestadoViewSet(viewsets.ModelViewSet):
     queryset = Atestado.objects.all()
     serializer_class = AtestadoSerializer
-    
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
 
 @login_required(login_url='/contas/login/')
 def add_atestado(request):
