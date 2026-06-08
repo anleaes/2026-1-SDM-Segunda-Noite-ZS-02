@@ -5,6 +5,7 @@ from .forms import AtestadoForm
 from .serializer import AtestadoSerializer
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from cid.models import Cid
 # Create your views here.
 
 class AtestadoViewSet(viewsets.ModelViewSet):
@@ -21,17 +22,18 @@ def add_atestado(request):
         form = AtestadoForm(request.POST)
 
         if form.is_valid():
-            atestado = form.save(commit=False)
-            atestado.save()
+            atestado = form.save(commit=False) 
+            atestado.save() 
+            form.save_m2m()  # Salva as relações ManyToMany (CIDs)
             return redirect('atestado:list_atestado')
 
-    form = AtestadoForm()
-    context['form'] = form
-    return render(request, template_name, context)
+    form = AtestadoForm() 
+    context['form'] = form 
+    return render(request, template_name, context) 
 
 def list_atestado(request):
     template_name = 'atestado/list_atestado.html'
-    atestados = Atestado.objects.all()
+    atestados = Atestado.objects.prefetch_related('cid')
 
     context = {
         'atestados': atestados
@@ -75,6 +77,7 @@ def delete_atestado(request, id_atestado):
 def search_atestado(request):
     template_name = 'atestado/list_atestado.html'
     query = request.GET.get('query')
+    cids = Cid.objects.filter()
 
     if query:
         # Busca por código de autenticação, nome do paciente, nome do médico ou descrição do CID
@@ -84,12 +87,13 @@ def search_atestado(request):
             Q(consulta__medico__nome__icontains=query) |
             Q(cid__descricao__icontains=query) |
             Q(cid__cod_cid__icontains=query)
-        )
+        ).distinct()  # distinct para evitar duplicatas devido ao join com Cid
     else:
         atestados = Atestado.objects.all()
 
     context = {
-        'atestados': atestados
+        'atestados': atestados,
+        'cids': cids,
     }
 
     return render(request, template_name, context)

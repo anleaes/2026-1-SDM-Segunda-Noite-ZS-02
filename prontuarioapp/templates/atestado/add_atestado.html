@@ -1,62 +1,79 @@
 {% extends 'base.html' %}
 
 {% block title %}
-
-    Adicionar Atestado - {{ block.super }}
-
+    {% if form.instance.id %}
+        Editar Atestado - {{ block.super }}
+    {% else %}
+        Adicionar Atestado - {{ block.super }}
+    {% endif %}
 {% endblock title %}
 
 {% block body %}
 
 <br />
 
-<b>Cadastro de Atestado - Prontuário Médico</b>
+<b>
+    {% if form.instance.id %}
+        Editar Atestado - Prontuário Médico
+    {% else %}
+        Cadastro de Atestado - Prontuário Médico
+    {% endif %}
+</b>
 
 <br />
 <br />
 
-<form action="" method="POST">
+<form method="POST">
 
-{% csrf_token %}
+    {% csrf_token %}
+
+    <h3>Dados do Atestado</h3>
 
     <label>Código de Autenticação</label>
     <br />
     {{ form.codigo_autenticacao }}
-    <br />
-    <br />
+    <br /><br />
 
     <label>Data Início do Afastamento</label>
     <br />
     {{ form.data_inicio_afastamento }}
-    <br />
-    <br />
+    <br /><br />
 
     <label>Quantidade de Dias</label>
     <br />
     {{ form.quantidade_dias }}
-    <br />
-    <br />
+    <br /><br />
 
     <label>Tipo de Atestado</label>
     <br />
     {{ form.tipo_atestado }}
-    <br />
-    <br />
+    <br /><br />
 
     <label>Consulta</label>
     <br />
     {{ form.consulta }}
-    <br />
-    <br />
+    <br /><br />
 
-    <label>CID</label>
-    <br />
+    <hr />
+
+    <h3>CIDs Vinculados</h3>
+    
+    <p style="color: gray; font-size: 0.9em; margin-bottom: 10px;">
+        (Dica: Segure Ctrl no Windows ou Cmd no Mac para selecionar múltiplos CIDs)
+    </p>
+
+    <!-- O campo de múltipla escolha renderiza todos os CIDs -->
     {{ form.cid }}
+
     <br />
     <br />
 
     <button type="submit">
-        Salvar Atestado
+        {% if form.instance.id %}
+            Atualizar Atestado
+        {% else %}
+            Salvar Atestado
+        {% endif %}
     </button>
 
 </form>
